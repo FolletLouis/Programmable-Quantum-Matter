@@ -20,5 +20,7 @@ This section corresponds to folder "/Dynamical Decoupling - Filter Function/" wh
 
 2. heat_capacity.py: This is a helper function to simulate heat-capacity of diamond chip based on its footprint.
 
-3. Decoherence_sim.py: This code uses the values from csv files above, and helper function above and simulates variation in temperature of SiV and T2 values, Eq.(18-20) in the main text. This is used to generate Fig. 4(a-f) in the main text. 
+3. Decoherence_sim.py: This code uses the values from csv files above, and helper function above and simulates variation in temperature of SiV and T2 values, Eq.(18-20) in the main text. This is used to generate Fig. 4(a-f) in the main text.
+
+4. T2_heatmaps.py: This code is similar to above, but instead plots the heatmap for T2A/T2B over an epsilon-f grid space. This is used to generate Fig. 4(g-j) in the main text. 
 
