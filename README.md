@@ -46,7 +46,13 @@ This section corresponds to folder "/Compilation/" which contains the following 
 
 3. Alg_II_linkstat.py: This code simulates link statistics h_j, for different values of time window, as described in Algorithm II. This is used to generate Fig. 8d in the main text. 
 
+## Section VI: Heat Modeling
+This section corresponds to folder "/Heat_Modeling/" which contains the following files:
 
+1. heat_capacity.py: same as above section
 
+2. dil_fridge.py: This code estimates the slow rise in the average cold-plate temperature. This is used to generate Fig. 11 in the Supplements.
+
+3. temp_siv_fast.py: This code estimates the fast rise in the average SiV temperature. This is used to generate Fig. 12 in the Supplements.
 
 
