@@ -11,7 +11,7 @@ This section corresponds to folder "/Dynamical Decoupling - Filter Function/" wh
 
 1. Filter_Function_I.ipynb: This notebook takes the numeric values from SAFE-GRAPE optimization and numerically evaluates the Filter function for pulse sequences A, and B. This is used to generate Fig. 3(b-d) in the main text.
 
-2. Filter_Function_II.py: This code is similar to above, and further takes into account a noise-spectrum for SiV. Further, it numerically evaluates the value of chi, T2, Fidelity, z (scaliing factor) for pulse sequences A and B, and stores them in .csv files.
+2. Filter_Function_II.py: This code is similar to above, and further takes into account a noise-spectrum for SiV. Further, it numerically evaluates the value of chi, T2, Fidelity, z (scaling factor) for pulse sequences A and B, and stores them in .csv files.
 
 ## Section III: Temperature and T2 Simulations
 This section corresponds to folder "/Dynamical Decoupling - Filter Function/" which contains the following files:
@@ -36,3 +36,13 @@ This section corresponds to folder "/Entanglement simulations/" which contains t
 4. qv_vs_t_cmpl_A/B.py: This utlizes the above helper codes and .csv files, and evaluates average 2-qubit gate error for different points in (j-k) space. Then it performs the thresholding and evaluates the number of n_links and epsilon_eff (Eq. (27-28)), and prints statistics for a particular value of t_dds, t_cmpl, N.      
 
 5. n_links_plots.py, e_eff_plots.py: These codes utilize the above code, and data generated from previous part and plots variaton with N. This is used to generate Fig. 6(a-d) in the main text.
+
+## Section V: Compilation
+This section corresponds to folder "/Compilation/" which contains the following files:
+
+1. Alg_II_linkstat.py: This code simulates link statistics h_j, for a particular time window, as descirbed in Algorithm II. This is used to generate Fig. 8(a-c) in the main text.
+
+
+
+
+
