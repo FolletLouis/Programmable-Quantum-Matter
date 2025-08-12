@@ -11,3 +11,5 @@ This section corresponds to folder "/Dynamical Decoupling - Filter Function/" wh
 
 1. Filter_Function_I.ipynb: This notebook takes the numeric values from SAFE-GRAPE optimization and numerically evaluates the Filter function for pulse sequences A, and B. This is used to generate Fig. 3(b-d) in the main text.
 
+2. Filter_Function_II.py: This code is similar to above, and further takes into account a noise-spectrum for SiV. Further, it numberically evaluates the value of chi, T2, Fidelity, z (scaliing factor) for pulse sequences A and B, and stores them in .csv files.
+
