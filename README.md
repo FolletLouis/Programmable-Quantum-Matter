@@ -24,6 +24,8 @@ This section corresponds to folder "/Dynamical Decoupling - Filter Function/" wh
 
 4. T2_heatmaps.py: This code is similar to above, but instead plots the heatmap for T2A/T2B over an epsilon-f grid space. This is used to generate Fig. 4(g-j) in the main text.
 
+5. qubit_scaling.py: This code si similar to "Decoherence_sim.py" but it sweeps over the value of number of qubits 'm', to see its impact on Theta and T2. This is used to generate Fig. 13 in the Supplements.
+   
 ## Section IV: Entanglement Simulations
 This section corresponds to folder "/Entanglement simulations/" which contains the following files:
 
@@ -51,7 +53,7 @@ This section corresponds to folder "/Heat_Modeling/" which contains the followin
 
 1. heat_capacity.py: same as above section
 
-2. dil_fridge.py: This code estimates the slow rise in the average cold-plate temperature. This is used to generate Fig. 11 in the Supplements.
+2. dil_fridge.py: This code estimates the slow rise in the average cold-plate stage temperature in the dilution fridge. This is used to generate Fig. 11 in the Supplements.
 
 3. temp_siv_fast.py: This code estimates the fast rise in the average SiV temperature. This is used to generate Fig. 12 in the Supplements.
 
