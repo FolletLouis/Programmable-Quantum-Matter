@@ -40,7 +40,9 @@ This section corresponds to folder "/Entanglement simulations/" which contains t
 ## Section V: Compilation
 This section corresponds to folder "/Compilation/" which contains the following files:
 
-1. Alg_II_linkstat.py: This code simulates link statistics h_j, for a particular time window, as descirbed in Algorithm II. This is used to generate Fig. 8(a-c) in the main text.
+1. Alg_II_heatmap.py: This code simulates different paramters of link-statistics h_j in the form of color maps. This is used to generate Fig. 8(a-c) in the main text.
+
+2. Alg_II_linkstat.py: This code simulates link statistics h_j, for different values of time window, as described in Algorithm II. This is used to generate Fig. 8d in the main text. 
 
 
 
