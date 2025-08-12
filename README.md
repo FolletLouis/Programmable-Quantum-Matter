@@ -4,7 +4,9 @@ Codes for the paper: "Programmable Quantum Matter: Harnessing Qubit Inhomogeneit
 We have organized the Github repo in terms of the sections in the paper and Supplements. Below we describe the workflow and code used to generate a particular figure in the main text or supplements.
 
 ## Section I: SAFE-GRAPE
-This section corresponds to folder "/Error-Correcting Pulses_/" which contains the notebook SAFE_GRAPE.ipynb. This code implements the numeric pulse engineering and is used to generate Fig. 2 in the main text.
+This section corresponds to folder "/Error-Correcting Pulses_/" which contains the following files:
+
+1. SAFE_GRAPE.ipynb. This notebook implements the numeric pulse engineering and is used to generate Fig. 2 in the main text.
 
 ## Section II: Filter-Function
 This section corresponds to folder "/Dynamical Decoupling - Filter Function/" which contains the following files:
@@ -24,7 +26,7 @@ This section corresponds to folder "/Dynamical Decoupling - Filter Function/" wh
 
 4. T2_heatmaps.py: This code is similar to above, but instead plots the heatmap for T2A/T2B over an epsilon-f grid space. This is used to generate Fig. 4(g-j) in the main text.
 
-5. qubit_scaling.py: This code si similar to "Decoherence_sim.py" but it sweeps over the value of number of qubits 'm', to see its impact on Theta and T2. This is used to generate Fig. 13 in the Supplements.
+5. qubit_scaling.py: This code is similar to "Decoherence_sim.py" but it sweeps over the value of number of qubits 'm', to see its impact on Theta and T2. This is used to generate Fig. 13 in the Supplements.
    
 ## Section IV: Entanglement Simulations
 This section corresponds to folder "/Entanglement simulations/" which contains the following files:
@@ -57,4 +59,7 @@ This section corresponds to folder "/Heat_Modeling/" which contains the followin
 
 3. temp_siv_fast.py: This code estimates the fast rise in the average SiV temperature. This is used to generate Fig. 12 in the Supplements.
 
+## Section VII: Strain Driving
+This section corresponds to folder "/SiV Strain Driving/" which contains the following files:
 
+1. StrainDriving.ipynb: This notebook performs simulations to show that arbitrary single qubit gates can be realized using strain driving of SiV, in particular rotations around X, Y and XY bisector on the Bloch sphere are shown. This is used to generate Fig. 2 in the Supplements.
