@@ -8,6 +8,8 @@ This section corresponds to folder "/Error-Correcting Pulses_/" which contains t
 
 1. SAFE_GRAPE.ipynb. This notebook implements the numeric pulse engineering and is used to generate Fig. 2 in the main text.
 
+2. BandwidthAware_SAFEGRAPE.ipynb: This notebook implements an adapted version of the SAFE-GRAPE algorithm that takes experimental hardware constraints (maximum bandwidth and Rabi drive strength) into account. It is used to generate Fig. S4 of Supplementary Information.
+
 ## Section II: Filter-Function
 This section corresponds to folder "/Dynamical Decoupling - Filter Function/" which contains the following files:
 
