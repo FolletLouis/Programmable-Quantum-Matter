@@ -58,8 +58,37 @@ def _convert_and_cache_pdf(path: Path, dpi: int = PNG_DPI) -> bytes | None:
 
 def pdf_if_exists(key: str, width: str = "100%", height: str = "1000px"):
     """Return marimo component displaying the figure as high-quality PNG if file exists, else None."""
+    # Embedded figures (HF deploy - no binary files)
+    try:
+        from app.embedded_figs import EMBEDDED_FIGS
+        if key in EMBEDDED_FIGS:
+            b64 = EMBEDDED_FIGS[key]
+            html = (
+                f'<img src="data:image/png;base64,{b64}" '
+                f'style="max-width:{width};width:100%;height:auto;border:1px solid #ddd;border-radius:4px;" '
+                f'alt="{key}" />'
+            )
+            return mo.Html(html)
+    except ImportError:
+        pass
     path = PAPER_FIGS.get(key)
-    if path is None or not path.exists():
+    if path is None:
+        return None
+    # Prefer pre-generated PNG (for deploy without PDFs)
+    png_path = path.with_suffix(".png")
+    if png_path.exists():
+        try:
+            png_bytes = png_path.read_bytes()
+            b64 = base64.b64encode(png_bytes).decode("ascii")
+            html = (
+                f'<img src="data:image/png;base64,{b64}" '
+                f'style="max-width:{width};width:100%;height:auto;border:1px solid #ddd;border-radius:4px;" '
+                f'alt="{png_path.name}" />'
+            )
+            return mo.Html(html)
+        except Exception:
+            pass
+    if not path.exists():
         return None
     try:
         # Prefer cached PNG if up to date
@@ -82,5 +111,5 @@ def pdf_if_exists(key: str, width: str = "100%", height: str = "1000px"):
 
 
 def available_fig_keys() -> list[str]:
-    """Return list of figure keys whose PDF files exist."""
-    return [k for k, p in PAPER_FIGS.items() if p and p.exists()]
+    """Return list of figure keys whose PDF or PNG files exist."""
+    return [k for k, p in PAPER_FIGS.items() if p and (p.exists() or p.with_suffix(".png").exists())]

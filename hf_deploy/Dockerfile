@@ -18,9 +18,8 @@ RUN uv pip install -r requirements.txt
 COPY paper_explorer.py .
 COPY custom.css .
 COPY app/ app/
-COPY PQM_latex_file/figs/ PQM_latex_file/figs/
 
-# Precomputed CSV data (for interactive T2/entanglement figures)
+# Precomputed CSV data (figures embedded in app/embedded_figs.py) (for interactive T2/entanglement figures)
 COPY ["Temperature and T2 simulations", "Temperature and T2 simulations"]
 COPY ["Entanglement simulations", "Entanglement simulations"]
 
