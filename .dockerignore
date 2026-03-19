@@ -1,0 +1,39 @@
+# Git and IDE
+.git
+.gitignore
+.cursor
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+.mypy_cache
+
+# Documentation and dev files (not needed at runtime)
+*.md
+!README.md
+APP_ARCHITECTURE.md
+README_EXPLORER.md
+LICENSE
+
+# LaTeX source (figures only needed)
+PQM_latex_file/*.tex
+PQM_latex_file/*.bib
+PQM_latex_file/*.pdf
+PQM_latex_file/figs/*.tex
+
+# Large/unnecessary
+*.zip
+PQM_PRX_v2.zip
+PQM_main_text.pdf
+PQM_latex_file/supp.pdf
+
+# Notebooks and scripts (app uses app/ package)
+*.ipynb
+Error-Correcting Pulses_
+"Dynamical Decoupling - Filter Function"
+Heat_Modeling
+Compilation
+"SiV Strain Driving"
+
+# PNG cache (PDFs are used directly)
+PQM_latex_file/figs/.png_cache

@@ -1,0 +1,907 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%   Version 4.2a of REVTeX, December 2014
+%
+%   Copyright (c) 2014 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.2
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)   bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+ superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+ prx,
+%pra,
+%prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-2}
+
+%\usepackage{todonotes}
+\usepackage{url}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+%\usepackage{cuted}
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{pdfpages}  % in the preamble
+
+
+
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+\usepackage{physics}
+\usepackage{setspace}
+%\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{array}
+\usepackage{dashrule}
+\usepackage[bottom]{footmisc}
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+\usepackage{physics}
+\usepackage{stackengine}
+
+\usepackage{tcolorbox}
+\tcbuselibrary{listings, breakable}
+
+% In preamble
+\usepackage{amsmath,accents}
+
+% Define dotted overline using accents package
+\newcommand{\dotbar}[1]{\accentset{\bullet}{#1}}
+
+\newcommand{\rev}[1]{\textcolor{red}{#1}}
+
+% Define dashed bar (visually, use tilde or other approximation)
+\newcommand{\dashbar}[1]{\widetilde{#1}}
+
+% \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+% \footnotetext[2]{These authors contributed equally to this work.} % \dagger
+% \footnotetext[1]{Contact authors: anand43@mit.edu,\\englund@mit.edu} % \ast
+
+
+
+% Define double overline
+\newcommand{\doublebar}[1]{\overline{\overline{#1}}}
+
+\newcounter{algorithm} % For numbering
+\newcommand{\algcaption}[1]{%
+  \refstepcounter{algorithm}%
+  \noindent\rule{\textwidth}{0.8pt}
+  \textbf{Algorithm~\thealgorithm. #1}
+  \noindent\rule{\textwidth}{0.8pt}
+}
+
+\pdfcompresslevel=9
+\pdfobjcompresslevel=3
+
+\usepackage{hyperref}% add hypertext capabilities
+%\usepackage{pdfpages}
+\begin{document}
+
+\title{%
+  Programmable Quantum Matter:\texorpdfstring{\\}{ }
+  Heralding Large Cluster States in Driven Inhomogeneous Spin Ensembles
+}
+
+\author{Pratyush Anand}
+\thanks{These authors contributed equally to this work.}
+\affiliation{Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+\affiliation{Research Laboratory of Electronics, Massachusetts Institute of
+Technology, Cambridge, MA 02139, USA}
+\author{Louis Follet}
+\thanks{These authors contributed equally to this work.}
+\affiliation{Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+\affiliation{Research Laboratory of Electronics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+
+\author{Odiel Hooybergs}
+\thanks{These authors contributed equally to this work.}
+\affiliation{Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+\affiliation{Research Laboratory of Electronics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+\affiliation{Department of Physics, ETH Zürich, 8093 Zürich, Switzerland}
+\affiliation{Quantum Center, ETH Zürich, 8093 Zürich, Switzerland}
+
+\author{Dirk R. Englund}%
+\affiliation{Department of Electrical Engineering and Computer Science, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+\affiliation{Research Laboratory of Electronics, Massachusetts Institute of Technology, Cambridge, MA 02139, USA}
+
+
+% --- Footnotes (manual) ---
+
+
+
+
+
+
+%\date{\today}% It is always \today, today,
+             %  but any  date may be explicitly specified
+
+
+% below 200 words version 
+\begin{abstract}
+Atom-like emitters in solids have emerged as promising platforms for quantum sensing and information processing. Among the major challenges are inhomogeneities in emitter fine structure, which complicates quantum control. Here, we introduce a framework that leverages this emitter diversity to simplify the experimental resources needed to create optically heralded spin cluster states across $N_{q}$ emitters from the conventional order $O(N_{q})$ to $O(1)$ within ensembles of $N_{q}\sim 10-100$. Specifically, the optimized pulse sequence simultaneously corrects parameter variations (pulse-length error and frequency detuning error), achieving single-qubit gate fidelities exceeding 99.99\% for errors (normalized relative to Rabi drive strength) up to 0.3, while maintaining fidelities above 99\% even for errors as large as 0.4. Applying this optimized pulse sequence in the form of a Carr-Purcell-Meiboom-Gill (CPMG) based dynamical decoupling protocol to the dominant noise spectral density of silicon-vacancy centers in diamond, our approach enhances ensemble-average coherence times by more than a factor of $7$ relative to interleaved bang-bang based CPMG. For state-of-the-art dilution refrigeration systems, we further estimate sharply reduced heating when driving a global resonant optimal dynamical decoupling across $N_{q}$ silicon-vacancy spins, potentially resolving the current trade-off between spin coherence and scaling to $N_{q} \gg 1$. We further introduce a modified single-photon entanglement protocol with an efficient algorithm for deterministic entanglement compilation. Depending on the decoupling window, our method yields order $O(10^{2}\text{--}10^{4})$ more entanglement links than bang-bang sequences, with theoretical guarantees of order $\Omega(N_q)$ unique links—improvable via control-parameter tuning. Our approach thus offers enhanced fidelity, scalability, and robustness. Together, these techniques provide foundational tools—including global unitary control, phase denoising, remote entanglement, and compilation—for scalable quantum computing architectures based on heterogeneous spin ensembles.
+\end{abstract}
+
+ 
+
+\maketitle 
+
+\section{Introduction}
+
+% Overview figure
+
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width=1\textwidth]{figs/Fig_1-2_new.pdf}
+    \caption{\textbf{Architecture and protocol for mechanical bipartite graph cluster-state generation.}
+    \textbf{(a) Architecture overview.} Devices \(\mathcal{M}_{A/B}\) (Systems A/B, \(N_{a,b}\) spin qubits) are arbitrary mechanical structures that house heterogeneous color-center ensembles with non-uniform spin frequencies and spin–strain susceptibilities (represented by arbitrary color shades), operating in noisy environments.
+    Each ensemble is controlled by a single global strain drive that provides programmable qubit addressing (Sec.~\ref{sec_ApplicationQuantumComputation}, Algorithm~\ref{alg:1}) and is operated with optimized dynamical decoupling sequences (DDS; Sec.~\ref{sec_theoretical_framework} B–C), yielding robust quantum operations and extended spin coherence. 
+    A single-photon entanglement protocol generates heralded Bell pairs between the two ensembles; these pairs are compiled (Sec.~\ref{sec_ApplicationQuantumComputation}, Algorithm~\ref{alg:2}) into a two-dimensional bipartite-graph cluster state. For clarity, only a representative subset of entanglement links is shown with dashed lines.
+    \textbf{(b) Quantum circuit diagram of the full protocol}. The protocol starts with two sets of qubits in system A and B respectively: $\{\ket{0}_{j_{i},A}\}, \{\ket{0}_{k_{i},B}\}$ initialized in their respective ground states. A global initialization unitary $U_{\alpha,\phi_{1,2}}$ (in red) of time duration $t_{\text{unit}}$ prepares the initial state in a coherent superposition. Further, the global dynamical decoupling channel $\mathcal{E}_{\text{DDS}}$ (in yellow) reduces the phase noise of the systems, taking a time of $t_{\text{dds}}$. After this step, the compiler schedules pair-wise entanglement in the sequence: $\{(j_{i},k_{i})\}$, represented by the block $\mathcal{E}_{\text{cmpl}}$ (in orange) which takes time $t_{\text{cmpl} }$. The whole block is repeated for $M$ attempts to increase the success rate of entanglement. The inner architecture of these blocks are described in detail in SI Sec.~III \cite{googleSI_Programmable_Quantum_Matter_2025Google}.}
+    \label{fig:overview}
+\end{figure*}
+
+% Global quantum intro
+Among atom-like emitters, diamond color centers now support high-coherence spin–photon interfaces and optically heralded remote entanglement~\cite{beukers2024remote,Sukachev_2017,arjona2022photonic,knaut2024entanglement,iwasaki2017tin,parker2024diamond,rugar2021quantum}. Building on the quantum network milestones and recent modular frameworks for photon-mediated entanglement, these platforms provide a concrete path toward programmable quantum network nodes~\cite{barrett2005efficient,bernien2013heralded,hensen2015loophole,humphreys2018deterministic,pompili2021realization,doi:10.1126/science.add9771,beukers2024remote, PRXQuantum.5.010303}. Scaling such nodes imposes several key requirements:\\
+\textbf{R1:} spin coherence must be preserved throughout repeated, probabilistic optical attempts, necessitating dynamical decoupling that remains effective across heterogeneous ensembles;\\
+\textbf{R2:} control  must be uniform and high fidelity; both single- and two-qubit gates should tolerate amplitude and detuning variations with minimal per-emitter calibration \cite{Dong_2010}.\\
+\textbf{R3:} optically heralded entanglement must produce indistinguishable photons while protecting the memory state, as in single-photon or Barrett–Kok–type protocols~\cite{Hermans_2023,barrett2005efficient,bernien2013heralded,pompili2021realization}.\\
+\textbf{R4:} compilation and scheduling should orchestrate many parallel entanglement attempts with guarantees on link count and uniqueness \cite{maronese2021quantumcompiling,wang2024atomique,li2024dynamic,patil2022entanglement,kaur2023entanglement,humphreys2018deterministic}.\\
+\textbf{R5:} all of the above requirements must be thermally feasible within cryogenic power budgets during extended control and decoupling windows \cite{krinner2019engineering}.
+
+Today’s implementations fall short on several fronts. Standard bang–bang (CPMG/XY) decoupling \cite{Viola_1998} is detuning-sensitive and relies on high peak power, leading to rapid performance loss and heating in inhomogeneous ensembles. For the number of qubits being $N_q$, per-emitter interleaving of controls scales as order $O(N_q)$, compressing interpulse spacings below thermalization times and eroding $T_2$ and $T_2^*$ \cite{Sukachev_2017,nguyen2019integrated}. Entanglement scheduling via optical switching introduces insertion loss and synchronization complexity that directly suppress heralding rates, while photon-frequency inhomogeneity often forces filtering or matching that further reduces throughput unless compensated at the control level.
+
+Here, we replace lossy optical-switch scheduling with \emph{resonant, composite drive engineering}. A single optimized waveform provides global unitary control and dynamical decoupling across heterogeneous emitters — reducing control overhead from $O(N_q)$ to $O(1)$ — while maintaining high fidelity under detuning spread and lowering thermal load. Combined with a deterministic entanglement compiler, this enables optically heralded links with orders-of-magnitude higher throughput and guaranteed coverage.
+
+
+% Problems to address
+As seen from Fig. ~\ref{fig:overview} we propose to use two spatially separated spin ensembles to create a bipartite cluster state which acts as a resource for measurement-based quantum computing \cite{jozsa2005introductionmeasurementbasedquantum,RevModPhys.79.135}. This state is set of entanglement links $\{j-k\}$ where $j, k$ are qubit labelings in devices $\mathcal{M}_{A}$ and $\mathcal{M}_{B}$ respectively. This approach, however, transforms the challenge from a simple entanglement generation and scheduling \cite{pompili2022experimental,li2024dynamic,ni2025entanglement} limitation into a complex, multi-parameter optimization problem.
+The central task becomes minimizing the global cost function $J(\theta)$, defined as the average two-qubit error over all generated links:
+\begin{equation}
+    J(\theta) = \left\langle \epsilon_{jk}(\theta) \right\rangle_{j,k}
+\end{equation}
+Optimization is performed on the vector of experimental parameters $\theta = \{ P_{\mathrm{pulse}}, P_{\mathrm{DDS}}, P_{\mathrm{comp}} \}$, which includes the temporal shape of control pulses, the architecture of the dynamical decoupling sequences \cite{Viola_1998,Lucero_2010}, and the scheduling of entanglement attempts respectively. The error for each link, $\epsilon_{jk}$, is a function of both coherent control errors and decoherence during the entanglement protocol, as detailed in Eq.~\ref{Eq_e_ff} . Crucially, the fidelity decoherence for each link is determined by the compilation strategy $P_{\mathrm{comp}}$, which demands an efficient compilation strategy to build a graph state in PSPACE \cite{jain2009qippspace} and polynomial time. The value of $J(\theta)$ is therefore determined by the interplay between single-qubit gate fidelities, thermally limited coherence times, and the probabilistic efficiency of the underlying single-photon entanglement protocol \cite{Hermans_2023}.
+Our work systematically deconstructs and optimizes the components of $J(\theta)$ to deliver a scalable and robust solution.
+
+To solve this optimization problem, we take advantage of the diversity of color centers. This inherent heterogeneity provides the unique spectral labels necessary for qubit addressability under a global drive, which resolves the challenge of scheduling remote entanglement attempts that would otherwise scale super-exponentially. Our integrated approach, summarized in Fig.~\ref{fig:overview}, therefore delivers four key components: (i) high-fidelity global unitary control (\textbf{R2, R5}), (ii) broadband dynamical decoupling (\textbf{R1, R2}), (iii) a single-photon remote entanglement protocol (\textbf{R3}), and (iv) an efficient compilation algorithm to generate a bipartite cluster state \cite{Nielsen_2006} (\textbf{R4}).
+
+% Chosen platform for illustrating it
+
+We illustrate it on diamond-based group-IV defect centers \cite{bradac_quantum_2019, PhysRevLett.112.036405, iwasaki_germanium-vacancy_2015, PhysRevLett.118.223603, PhysRevLett.119.253601, PhysRevX.11.041041, PhysRevX.15.021011}, specifically the negatively charged silicon-vacancy center (SiV$^-$) which are optically active \cite{PhysRevB.51.16681, PhysRevLett.77.3041, Sukachev_2017} and feature addressable—via microwave or mechanical strain—electronic spin states \cite{pingault_coherent_2017, PhysRevB.97.205444} (serving as control qubits) and nearby nuclear spin states \cite{PhysRevLett.122.190503, doi:10.1126/science.add9771} (serving as memory qubits). These defect centers have been previously demonstrated as a quantum network node \cite{bhaskar_experimental_2020, doi:10.1126/science.add9771, PRXQuantum.5.010303}, single photon sources \cite{PhysRevLett.113.113602, PhysRevLett.129.053603} (serving as communication qubits), and have also been proposed for blind quantum computing \cite{doi:10.1126/science.adu6894}. Having a well-studied \cite{PhysRevB.97.205444} strain dependence of its qubit characteristics makes this substrate programmable up to device constraints. Therefore, the SiV$^-$ center contains all the major components required by a quantum computational substrate in our proposed framework. 
+
+
+% Guiding the reader through the paper
+
+% In Section \ref{sec_theoretical_framework}, we introduce the proposed system architecture, consisting of an ensemble of SiV$^-$ color centers in diamond interfaced with a mechanical structure. First, we establish how the mechanical strain of the structure can be used to drive arbitrary single-qubit gates on a single color center (Section \ref{sec_system_description}). Next, we show how a concatenated composite pulse sequence can be designed using gradient ascent pulse engineering (GRAPE) \cite{khaneja_optimal_2005} (Section \ref{sec_error_correcting_pulses}). This optimal control pulse can simultaneously correct pulse length errors and off-resonance errors \cite{PhysRevA.80.032303}. Hence it can be applied globally to perform an arbitrary single-qubit gate on all color centers at once. The use of these global optimal control pulses as rephasing $\pi$ pulses allows for simultaneous dynamical decoupling of all color centers, resulting in an effective decoherence time $T_2$ instead of $T_2^*$ for all color centers. In Section \ref{sec_dynamical_decoupling} a frequency-domain analysis of this effect is given using the filter function formalism and the performance of the GRAPE based Carr-Purcell-Meiboom-Gill (CPMG) sequence \cite{PhysRev.94.630, meiboom_modified_1958} is compared against the conventional bang-bang based CPMG sequence. In Section 
+% \ref{sec_ApplicationQuantumComputation} we elaborate on how this system can be useful for quantum computing purposes. We set up a formalism to create a bipartite-graph cluster states by linking two systems using a single-photon protocol for entanglement generation. A statistical definition of the system's quantum volume \cite{Cross_2019} is used to show the superior performance of our GRAPE optimal control pulse sequence over conventional bang-bang algorithms. Finally, we describe in detail how the full system can be compiled. 
+
+\rev{In Section \ref{sec_theoretical_framework}, we introduce the system architecture: an ensemble of SiV$^-$ centers driven by a global mechanical signal. We first establish the strain-mediated control of single-qubit gates (Section \ref{sec_system_description}). To overcome the ensemble's spectral inhomogeneity, we implement SAFE-GRAPE (Section \ref{sec_error_correcting_pulses}), a modified optimization routine that synthesizes control pulses robust to simultaneous amplitude and detuning errors \cite{khaneja_optimal_2005, PhysRevA.80.032303}. A single drive can effectively control our ensemble in a coherent way, forming a state of driven matter. These global operators enable simultaneous dynamical decoupling across the ensemble, substituting the rapid decoherence time $T_2^*$ with the extended $T_2$. In Section \ref{sec_dynamical_decoupling}, we quantify this performance via filter-function analysis, contrasting our spectrally adapted sequences against conventional bang-bang Carr-Purcell-Meiboom-Gill (CPMG) protocols \cite{PhysRev.94.630, meiboom_modified_1958}. Section \ref{sec_ApplicationQuantumComputation} extends this framework to quantum computation, developing a formalism for bipartite cluster state generation via single-photon entanglement. We utilize a statistical quantum volume definition \cite{Cross_2019} to demonstrate the architectural superiority of SAFE-GRAPE over standard methods, concluding with a deterministic compilation algorithm for graph state assembly.}
+
+
+\section{Theoretical framework}
+\label{sec_theoretical_framework}
+
+\subsection{System description}
+\label{sec_system_description}
+
+Consider a set of $N_q$ group-IV color centers in diamond. The ground states (GS) and excited states (ES) manifold of each color center $CC_i$ are described by the Hamiltonian $\hat{\mathcal{H}
+ }_i^{\text{GS/ES}}$ that includes the strain, spin-orbit (SO) and Zeeman interaction: 
+ \begin{align}
+ \hat{\mathcal{H}}_i^{\text{GS/ES}} = \hat{\mathcal{H}}_i^{\text{strain}} + \hat{\mathcal{H}}_i^{\text{SO(GS/ES)}} + \hat{\mathcal{H}}_i^{\text{Zeeman}}
+ \end{align}
+
+
+While our protocol is generally applicable to group-IV color centers due to their shared $D_{3d}$ symmetry, we illustrate it using the transverse-oriented \(\mathrm{SiV}^{-}\) center as a well-characterized model system. Its explicit Hamiltonian, which accounts for the defect's orbital structure and its interaction with the magnetic field and lattice strain, is detailed in Sec.~I.A of the Supplements \cite{googleSI_Programmable_Quantum_Matter_2025Google}.
+
+Let us focus on the GS manifold and use its bottom 2 energy levels as a qubit with energy spacing $\hbar \omega_i$. An arbitrary single-qubit gate of type $\hat{\mathcal{U}}^  {\text{ideal}}(\theta, \phi)=\exp{-i\frac{\theta}{2}(\cos{\phi}\hat{\sigma}_x + \sin{\phi}\hat{\sigma}_y)}$ can be implemented using the strain-driving Hamiltonian $\hat{\mathcal{H}}_i^{\text{drive}}$ \cite{PhysRevB.97.205444}.
+
+\begin{align}
+    \hat{\mathcal{H}}_i^{\text{drive}} = 
+    \begin{bmatrix}
+    0 & 0 & \epsilon_{E_{gx},i}^{ac} & 0 \\
+    0 & 0 & 0 & \epsilon_{E_{gx},i}^{ac} \\
+    \epsilon_{E_{gx},i}^{ac} & 0 & 0 & 0 \\
+    0 & \epsilon_{E_{gx},i}^{ac} & 0 & 0 
+  \end{bmatrix}
+  \cos(\omega_d t_i + \varphi)
+\end{align}
+
+The strain oscillations are driven at frequency $\omega_d$ and phase offset $\varphi$, where these are chosen to satisfy $\omega_d = \omega_i$ and $\varphi=\pi - \phi$. The evolution time $t_i$ should be picked equal to $\frac{\theta}{\Omega_i}$. The effective Rabi frequency $\Omega_i$ is determined by fitting a squared sinusoid to the probability of finding the color center in its ground state after initialization in the first excited state. Further details on the realization of strain-driven arbitrary single-qubit gates are provided in Sec.~I.B of Supplements \cite{googleSI_Programmable_Quantum_Matter_2025Google}.
+
+In our framework we are using a global strain drive, i.e. strain pulses that act on all $N_q$ color centers. Hence, the strain drive frequency is detuned differently from all color centers: $\omega_d = \omega_i + \Delta_i$. This occurs due to different local strain environments $\epsilon_{E_{gx},i}^{dc}$. Furthermore, the effective Rabi frequency can vary for all color centers: $\Omega_i = \Omega (1 + \epsilon_i)$. These variations encompass 2 effects: different strain modulation amplitudes $\epsilon_{E_{gx},i}^{ac}$ due to different locations in the device and different spin-strain susceptibilities for different local strain environments. As a result, the dynamic evolution for a time $t=\frac{\theta}{\Omega}$ of each color center $i$ under $\hat{\mathcal{H}}_i^{\text{drive}}$ is given by the unitary operator $\hat{\mathcal{U}}_{\epsilon_i , f_i}^{\text{real}}(\theta, \phi)$.
+
+\begin{align*}
+    &\hat{\mathcal{U}}_{\epsilon_i , f_i}^{\text{real}}(\theta, \phi) = \exp{-\frac{i}{\hbar}\hat{\mathcal{H}}^{\text{drive}}_i t} \\
+    &\cong \exp{-i\frac{\theta}{2} [ (1+\epsilon_i)(\cos{\phi}\hat{\sigma}_{x,i} + \sin{\phi}\hat{\sigma}_{y,i}) - i f_i \hat{\sigma}_{z,i} ] }
+\end{align*}
+
+Here $\cong$ denotes the corresponding action on the bottom 2 energy levels. By comparing $\hat{\mathcal{U}}_{\epsilon_i , f_i}^{\text{real}}(\theta, \phi)$ with $\hat{\mathcal{U}}^{\text{ideal}}(\theta, \phi)$ it is clear that each color center experiences an amplitude error $\epsilon_i$ and an off-resonance error $f_i=\frac{\Delta_i}{\Omega}$.
+
+The total system Hamiltonian for our set of $N_q$ color centers and global strain drive is given by:
+
+\begin{align}
+    \hat{\mathcal{H}}^{\text{total}} = \sum_{i=1}^{N_q} \left( \hat{\mathcal{H}}_i^{\text{GS}} + \hat{\mathcal{H}}_i^{\text{drive}}\right)
+    \label{eq:syst_Hamiltonian}
+\end{align}
+
+
+\subsection{Error-Correcting Pulses}
+\label{sec_error_correcting_pulses}
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figs/Fig_3.pdf}
+    \caption{\textbf{SAFE-GRAPE optimal control pulse sequence for implementing \boldmath$\hat{\mathcal{U}}^{\text{ideal}}(\theta=\pi, \phi=0)$.} \textbf{(a)} Control pulse sequence before (rCinBB) and after (SAFE-GRAPE) optimization for a Rabi drive strength $\Omega=200$ Mrad/s. \textbf{(b)} Average gate infidelity heatmap for rCinBB (top) and SAFE-GRAPE (bottom) pulse sequence. Contours denote infidelities of $10^{-4}, 5\times10^{-4}, 10^{-3}, 5\times10^{-3}$ and $ 10^{-2}$, increasing from white to black. Note that both plots have their own color bar. \textbf{(c)}  Action of rCinBB (left) and SAFE-GRAPE (right) pulse sequence on the Bloch sphere for initial state $\ket{0}$ in case of $\epsilon=f=0$ (top) and $\epsilon=f=0.25$ (bottom). On each Bloch sphere, the purple and yellow arrows point at the initial and final state respectively. }
+    \label{fig:GRAPE}
+\end{figure*}
+
+\subsubsection{Composite Pulses}
+
+The application of a single strain pulse to a set of $N_q$ color centers introduces systematic control errors $\{\epsilon_i, f_i\}_{i\in [1...N_q]}$.
+%\begin{itemize}
+%    \item \textbf{Pulse Length Error (PLE):} Arising from deviations in the pulse amplitude, leading to incorrect rotation angles on the Bloch sphere.  
+%    \item \textbf{Off-Resonance Error (ORE):} Resulting from a mismatch between the strain drive frequency and the ground-state spin transition of the color center.  
+%\end{itemize}
+To mitigate these errors, robust pulse sequences from the nuclear magnetic resonance (NMR) field are adapted. Composite pulses, denoted as $\hat{\mathcal{U}}_{CP}(\theta, \phi)$, are constructed as sequences of elementary single-qubit gates $\hat{\mathcal{U}}(\theta_i, \phi_i)$:  
+\begin{align}
+\hat{\mathcal{U}}_{CP}(\theta, \phi) = \prod_{i=1}^{N_p} \hat{\mathcal{U}}(\theta_i, \phi_i)
+\end{align}
+where $N_p$ is the number of pulses in the sequence. Specifically, the BB1 sequence \cite{WIMPERIS1994221} addresses amplitude errors, while CORPSE \cite{PhysRevA.67.042308} mitigates off-resonance errors. For simultaneous robustness against both errors, we employ the reduced CinBB (rCinBB) pulse \cite{Bando2012Concatenated}, a concatenated composite pulse integrating CORPSE within the BB1 framework (see SI Sec.~II.B \cite{googleSI_Programmable_Quantum_Matter_2025Google}). The operator for the rCinBB pulse is expressed as:
+%\begin{align}
+$\hat{\mathcal{U}}_{rCinBB}(\theta,\phi) = \prod_{i=1}^{6} \hat{\mathcal{U}}(\theta_i, \phi_i)$,
+%\end{align}
+with parameters given in SI Table S2 \cite{googleSI_Programmable_Quantum_Matter_2025Google}.  
+%\begin{align}
+%    \theta_1 &= \theta_3 = \pi, \quad \theta_2 = 2\pi, \quad \theta_4 = \theta_6 + 2\pi = 2\pi + \frac{\theta}{2} - k, \notag \\
+%    \theta_5 &= 2\pi - 2k, \quad \phi_1 = \phi + \arccos\left(-\frac{\theta}{4\pi}\right), \notag \\
+%    \phi_2 &= 3\phi_1 - 2\phi, \quad \phi_4 = \phi_5 - \pi = \phi_6 = \phi. \label{eq:cinbb_params}
+%\end{align}
+
+% This sequence effectively compensates for both amplitude and off-resonance errors, as a first step toward an efficient global strain drive. 
+
+
+
+
+
+
+
+% \subsubsection{Gradient Ascent Pulse Engineering}
+
+\subsubsection{SAFE-GRAPE}
+
+More accurate error mitigation can be achieved by Simultaneous Amplitude and Frequency Error-correcting GRadient Ascent Pulse Engineering (SAFE-GRAPE) of composite pulses. Define the composite search space $\boldsymbol{\Omega}$ as the region of errors that should be mitigated, e.g. $\boldsymbol{\Omega} = \{(\epsilon,f) | \epsilon_{\text{min}}<\epsilon<\epsilon_{\text{max}} \wedge f_{\text{min}}<f<f_{\text{max}} \}$. The goal is to find a set $\{\theta_i , \phi_i \}_{i\in [1...N_p]}$ such that:
+
+\begin{align}
+    \forall (\epsilon , f) \in \boldsymbol{\Omega}: \prod_{i=1}^{N_p} \hat{\mathcal{U}}_{\epsilon , f}^{\text{real}}(\theta_i, \phi_i) \approx \hat{\mathcal{U}}^{\text{ideal}}(\theta,\phi)
+\end{align}
+
+The SAFE-GRAPE algorithm discretizes $\boldsymbol{\Omega}$ to $\boldsymbol{\Omega}^*$, e.g. $\boldsymbol{\Omega^*} = \{ \underbrace{\epsilon_{min}, ...,\epsilon_{max}}_{N_{\epsilon}} \} \times \{ \underbrace{f_{min}, ...,f_{max}}_{N_{f}}\}$. For each point in the discretized composite search space, we calculate the average gate infidelity $1-\overline{\mathcal{F}}(\epsilon,f)$ between the composite pulse sequence and the target operation. The SAFE-GRAPE algorithm then minimizes the total loss function $\mathcal{L}$, which is given by:
+
+\begin{widetext}
+\begin{align}
+    \mathcal{L} = \sum_{(\epsilon , f) \in \boldsymbol{\Omega^*}} \underbrace{ \left[ 1 - \frac{1}{2}\text{Tr}\left[ \left( \hat{\mathcal{U}}^{\text{ideal}}(\theta,\phi) \right)^\dagger \prod_{i=1}^{N_p} \hat{\mathcal{U}}_{\epsilon , f}^{\text{real}}(\theta_i, \phi_i) \right] \right] }_{1-\overline{\mathcal{F}}(\epsilon,f)} \mathcal{W}(\epsilon,f) % + \mathcal{L}_{p}
+\end{align}
+\end{widetext}
+
+where we introduced the additional weight factor $\mathcal{W}(\epsilon,f)$. If all the points in the composite search space are equally important, $\mathcal{W}(\epsilon,f)=1$ is a good choice. Alternatively, the center $(\bar{\epsilon}, \bar{f})$ of the composite search space can be prioritized using a Gaussian weight factor $\mathcal{W}(\epsilon,f)=\mathcal{N} \exp \left( - \frac{(\epsilon - \bar{\epsilon})^2}{2 \sigma_{\epsilon}^2} - \frac{(f - \bar{f})^2}{2 \sigma_{f}^2} \right) $, with the appropriate normalization constant $\mathcal{N}$.
+
+At the start of the SAFE-GRAPE algorithm we define the hyperparameters of the model. $\theta$ and $\phi$ define the target unitary $\hat{\mathcal{U}}^{\text{ideal}}(\theta, \phi)$. By selecting different values for $\theta$ and $\phi$ it is possible to implement an arbitrary single-qubit gate. $N_p$ sets the number of pulses in the composite pulse sequence. $\epsilon_{min},\epsilon_{max},N_{\epsilon},f_{min},f_{max}$ and $N_f$ define the discretized composite search space $\boldsymbol{\Omega^*}$. The relative importance of points within $\boldsymbol{\Omega^*}$ is set by the definition of $\mathcal{W}(\epsilon,f)$. The effective Rabi drive strength $\Omega$ is fixed, so all off-resonance errors $f_i$ are constant for the respective color centers with fixed detuning $\Delta_i$. Since $t=\frac{\theta}{\Omega}$, we can now represent the composite pulse sequence $\prod_{i=1}^{N_p} \hat{\mathcal{U}}_{\epsilon , f}^{\text{real}}(\theta_i, \phi_i)$ by the set of trainable parameters $\{t_i , \phi_i \}_{i\in [1...N_p]}$. These are initialized based on the rCinBB composite pulse sequence. We use a sigmoid re-parametrization in order to force each $t_i$ to lie in $[t_{min}, t_{max}]$, where $t_{min}$ and $t_{max}$ are also hyperparameters of the model:
+
+\begin{align}
+    t_i \xrightarrow{} \tilde{t}_i = t_{min} + (t_{max} - t_{min})\frac{1}{1+\exp(-t_i)}
+\end{align}
+
+We implement the SAFE-GRAPE algorithm in \texttt{PyTorch} \cite{paszke2019pytorchimperativestylehighperformance} and use the built-in L-BFGS optimizer \cite{Liu1989}. SI Sec.~II.C \cite{googleSI_Programmable_Quantum_Matter_2025Google} lists all the parameter values used in the SAFE-GRAPE algorithm. 
+
+As an example, we implement SAFE-GRAPE for a $\pi$-X gate  $\hat{\mathcal{U}}^{\text{ideal}}(\theta=\pi, \phi=0)$. The resulting optimal control pulse sequence is shown and compared to the rCinBB pulse sequence in Fig.~\ref{fig:GRAPE}(a). To illustrate the effect of both pulse sequences, we show their action on the ground state in Fig.~\ref{fig:GRAPE}(c). When no amplitude error or off-resonance error is present, both rCinBB and SAFE-GRAPE perform well, achieving a fidelity of 100\% and $>99.999\%$ respectively. Once amplitude and off-resonance errors are introduced, rCinBB fidelity decreases more rapidly. In case of $\epsilon=f=0.25$, the respective fidelities drop to 92.7\% and 99.987\%. SAFE-GRAPE still manages to flip the initial $\ket{0}$ state close to the $\ket{1}$ state on the Bloch sphere, whereas for rCinBB the yellow arrow indicating the final state is clearly deviating from the $\ket{1}$ state. Hence, at the cost of higher bandwidth requirements and a 51\% increase in pulse duration w.r.t. the rCinBB pulse sequence, SAFE-GRAPE produces a more robust pulse with $<10^{-4}$ average gate infidelity for most of the composite search area (Fig.~\ref{fig:GRAPE}(b)). 
+
+\rev{In Fig.~\ref{fig:GRAPE}(b), we vary normalized amplitude and detuning errors $(\epsilon,f)\in[-0.3,0.3]$, where $f \equiv \Delta/\Omega_{0}$ is the detuning normalized to the nominal Rabi rate $\Omega_{0}$. Thus the $\pm 0.3$ range is intended to capture experimentally relevant, MHz-scale residual variations during spin control (after standard resonance identification and/or coarse tuning), rather than the full GHz-scale static inhomogeneity across an untreated SiV ensemble. The SiV spin transition depends strongly on local strain \cite{PhysRevB.97.205444}, leading to center-frequency differences across distinct emitters that can be GHz-scale. In practice, coherent control is typically performed on a selected set of SiVs (a narrow spectral class) after calibrating its resonance; the remaining detuning during operation is then dominated by drift and dephasing-related fluctuations on the scale of a few MHz to $\sim 10~\mathrm{MHz}$ (consistent with typical $T_2^{*}$ and measured spin-resonance linewidths \cite{pingault_coherent_2017}). For our nominal $\Omega_{0} = 2\pi \times 30~\mathrm{MHz}$, $|f| \le 0.3$ corresponds to $|\Delta| \le 0.3\,\Omega_{0} \approx 2\pi \times 9~\mathrm{MHz}$, which provides a realistic robustness margin against these residual detunings.
+We choose a $\pm$30\% amplitude error to ensure robustness to large Rabi-drive fluctuations arising from (i) spatial variation of strain-wave amplitude across the device, (ii) center-to-center differences in spin–strain susceptibility due to static strain \cite{PhysRevB.97.205444}, and (iii) minor microwave power instability.}
+
+
+
+
+
+
+
+The average gate infidelity represents the fidelity between the state after evolution by the composite pulse sequence and the target final state, averaged over all possible input states. Here we have calculated the fidelity based on perfect control pulses, such that the resulting infidelity maps reflect best the differences between the two composite control pulse sequences. 
+
+\rev{In Supplementary Information \ref{sec_bandwidthawaresafe-grape} we also introduce Bandwidth Aware SAFE-GRAPE. It is an adapted version of the algorithm that allows one to restrict the bandwidth of the optimal control pulse so that it is compatible with specific experimental hardware. We show that we can find an optimal control pulse for an I/Q drive with a bandwidth of 100 MHz, that is able to achieve similar infidelities as the control pulse in figure \ref{fig:GRAPE} over the same composite search space.}
+
+\subsection{Dynamical Decoupling: Frequency Domain Picture}
+\label{sec_dynamical_decoupling}
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figs/Master_Fig_3.pdf}
+     \caption{\textbf{Filter function simulations}. \textbf{(a)} Schematic for sequences $\mathcal{A}_{N}(\tau)$ and $\mathcal{B}_{N}(\tau,m)$. \textbf{(b)} As $N$ increases, the modified filter function $F_{ij}/\omega^{2}$ for $\mathcal{A}_{N}$ reduces, representing increased noise suppression. \textbf{(c)} $F_{ij}/\omega^{2}$ for $\mathcal{A}_{1}$ rises for increased pulse detuning $f$. \textbf{(d)} There is a much larger increment in $F_{ij}/\omega^{2}$ for $\mathcal{B}_{1}(m=1)$ for the same change in $f$. This shows that sequence $\mathcal{A}_{N}$ is more robust against off-resonance errors and hence better for implementing a dynamical decoupling sequence than sequence $\mathcal{B}_{N}$. ($f = 0$ for plot \textbf{(b)}; $\epsilon = 0$ for all plots.)}
+    \label{fig:Filter_Function}
+\end{figure*}
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width= \linewidth]{figs/T2_main.pdf}
+    \caption{\textbf{Temperature and $T_{2}$ simulations}. \textbf{(a-c)} Variation of SiV$^{-}$ temperature $\Theta_{\text{SiV}}$ with the CPMG index $N$. Sequence $\mathcal{B}$ consistently leads to a higher rise in temperature compared to $\mathcal{A}$. As $t_{\text{dds}}$ is increased, the rise in temperature reduces for both sequences due to the reduction in the duty cycle of the active heat load. \textbf{(d-f)} Variation of $T_{2}$ (for the central qubit, i.e. $\epsilon=f=0$) with $N$. The orange shaded region represents the region $T_{2}<t_{\text{dds}}$, signifying that the decoupling protocol is futile in that region. Red circles represent the optimal CPMG index (i.e. $N$ for which $T_{2}$ is maximum), signifying the interplay between heat-induced decoherence and improved coherence due to dynamical decoupling. Furthermore, $T_{2}$ for sequence $\mathcal{A}$ is consistently larger than that for $\mathcal{B}$. As $t_{\text{dds}}$ increases, $T_{2}$ values for both sequences increase but sequence $\mathcal{B}$ gets completely submerged in the shaded region \textbf{(e,f)}. This implies that decoupling via $\mathcal{B}$ does not work for larger values of $t_{\text{dds}}$. \textbf{(g-j)} For $t_{\text{dds}}=~0.8$ ms, we plot the heat-maps for $T_{2\mathcal{A}}/T_{2\mathcal{B}}$ on the composite ($\epsilon$-$f$) search space. Here the dotted contours show islands where the ratio is above a marked threshold. As $N$ increases, the contour landscape becomes more pronounced with maximum enhancement above $8$ for $N=16$. ($m$ is set to 121 for $\mathcal{B}$ in the above simulations.)}
+    \label{fig:T2_sims}
+\end{figure*}
+In the previous section, we talked about a GRAPE based composite pulse sequence to implement a $\pi$ rotation which corrects both off-resonance errors and amplitude errors. Correcting these errors ensures that all the qubits in the ensemble experience the same $\pi$ pulse upto a given fidelity as seen from the heat-map in Fig.~\ref{fig:GRAPE}. We propose to concatenate this optimized pulse for many cycles to implement a dynamical decoupling sequence on all qubits simultaneously. In order to quantify these sequences, we use the filter function formalism \cite{Biercuk_2011}, and thereby estimate the enhancement in $T_{2}$ time of the system of qubits.
+
+In the presence of a decohering environment, the Hamiltonian in Eq.~\ref{eq:syst_Hamiltonian}, changes to:
+\begin{align}
+    \hat{\mathcal{H}}^{\text{total}} = \sum_{i=1}^{N_q} \left(\hat{\mathcal{H}}_i^{\text{GS}} + \hat{\mathcal{H}}_i^{\text{drive}} + \hat{\mathcal{H}}_i^{\text{noise}}\right)
+\end{align}
+where $\hat{\mathcal{H}}_i^{\text{noise}}$ is given by \cite{Hangleiter_2021, Cerfontaine_2021}:
+\begin{align}
+    \hat{\mathcal{H}}_i^{\text{noise}} = \sum_{k}s_{k,i}(t)b_{k,i}(t)\hat{\mathbf{B}}_{k,i}
+\end{align}
+Here $\hat{\mathbf{B}}_{k,i}$ is the set of noise operators via which qubit $i$ couples to the environment, $b_{k,i}(t)$ is the classically fluctuating noise variable for qubit $i$ and noise mode $k$, $s_{k,i}(t)$ is the deterministic time-dependent sensitivity for the noise operator $\hat{\mathbf{B}}_{k,i}$.
+In order to simplify our analysis, we assume that the qubit ensemble only experiences dephasing noise (i.e. $k=1$, $\hat{\mathbf{B}}_{i}=\hat{\sigma}_{z,i}$) and we further assume that the noise mode is always coupled to the qubit with a constant sensitivity $s_{i}$, which can be absorbed in the noise variable $b_{i}(t)$. For the filter-function formalism, we consider the power spectral density of the fluctuating variables given by:
+ \begin{align}
+     \mathcal{S}_{i}(\omega) = \int_{0}^{\infty}e^{-j\omega\tau}\langle~b_{i}(t+\tau)~b_{i}(t)\rangle~d\tau
+ \end{align}
+ Furthermore, we define the coherence of the $i^{th}$ qubit spin state after time $\tau$ as \cite{Biercuk_2011}:
+ \begin{equation}
+     W_{i}(\tau) = |\overline{\langle\sigma_{y,i}\rangle}| \equiv e^{-\chi_{i}(\tau)}
+ \end{equation}
+Here the angled brackets represent the quantum-mechanical expectation value and the overline represents the average over multiple measurement outcomes on qubit $i$. Using these definitions, we have the following relation \cite{Biercuk_2011}:
+\begin{equation}
+    \chi_{ij}(\tau) = \frac{2}{\pi}\int_{0}^{\infty}\frac{\mathcal{S}_{i}(\omega)}{\omega^2}F_{ij}(\omega\tau)~d\omega
+\end{equation}
+We introduce the filter function (spectral dependence) $F_{ij}(\omega\tau)$ of the experiment sequence $j$ being performed on qubit $i$, which in our case will be a dynamical decoupling sequence. We further represent $\chi(\tau)$ as follows:
+\begin{equation}
+    \chi_{ij}(\tau) \equiv \bigg(\frac{\tau}{T_{2,ij}}\bigg)^{z_{ij}}
+\end{equation}
+where $T_{2,ij}$ is the coherence time of qubit $i$, after implementing an experimental sequence $j$, and $z_{ij}$ is the corresponding scaling, which depends on the noise spectrum $\mathcal{S}_{i}$. We further simplify our analysis by assuming that all qubits experience the same noise spectrum and are equally sensitive (i.e. $s_{i} = s$, $\mathcal{S}_{i}(\omega) = \mathcal{S}(\omega)~\forall~i$). We consider a double-exponential noise spectrum as seen in the SI of SiV$^{-}$ paper \cite{Sukachev_2017}:
+\begin{equation}
+    \mathcal{S}(\omega) = c_{0} e^{-\omega^2/\omega_{0}^2} + c_{1} e^{-\omega^2/\omega_{1}^2}
+\end{equation}
+where we assume the same values from the paper: $c_{0} = 10^6~s^{-1}$, $c_{1} = 10^9~s^{-1}$, $\omega_{0} = 1.8\times10^{3}~s^{-1}$, $\omega_{1} = 50~s^{-1}$. For the composite pulse sequence generated by optimizing the cost function $\mathcal{L}$ in Eq. 8, we numerically evaluate the filter-function using the \texttt{filter\_function} package \cite{hangleiter_2024_11192918} available in \texttt{Python}.
+ 
+For the comparison, we consider two sequence forms (Fig.~\ref{fig:Filter_Function}(a)): \{$\mathcal{A}_{i}(\tau)$, $\mathcal{B}_{i}(\tau, m)$\} for $i\in\{2,4,8,16\}$, where the sequence $\mathcal{A}_{i}(\tau)$ is composed of $i$ cycles of SAFE-GRAPE optimized pulses uniformly spaced over a measurement window $\tau$, and $\mathcal{B}_{i}(\tau, m)$ represents the $m$-times (addressing $m$ qubits individually) concatenated CPMG sequence with $i$ cycles over the measurement window $\tau$ in the bang-bang regime.
+
+\rev{We note that in our simulated inhomogeneous ensemble, the frequency separation between emitters is smaller than the Rabi frequency. In a standard experimental setup, this would inevitably lead to significant crosstalk for Sequence $\mathcal{B}$ if individual addressing were attempted. However, we deliberately excluded crosstalk effects from the simulation of Sequence $\mathcal{B}$ to construct a \textit{steelman} baseline (an idealized upper bound) for comparison. By assuming that Sequence $\mathcal{B}$ operates with perfect crosstalk mitigation strategies (e.g., via advanced methods like spatial selection or strong B-field gradients), we grant the baseline a performance level that is physically optimistic and likely unattainable in practice.}
+
+Fig.~\ref{fig:Filter_Function}(b) shows the numerically simulated filter functions \( F_{ij}/\omega^2 \) versus \( \omega \tau \) on a log-log scale for sequences \( \mathcal{A}_N \), where \( N \) is the number of \(\pi\) pulses for $\epsilon=f=0$. As \( N \) increases from 1 to 32, the low-frequency part of the filter (e.g., \( \omega \tau \lesssim 10 \)) is increasingly suppressed, with filter values dropping by over 7 orders of magnitude—from around \( 10^{-5} \) for \( \mathcal{A}_1 \) to below \( 10^{-12} \) for \( \mathcal{A}_{32} \). Strong oscillations appear in the range \( \omega \tau \sim 10^2 \) to \( 10^6 \), becoming denser and more structured as \( N \) increases, which reflects enhanced frequency selectivity.
+
+At very high frequencies (\( \omega \tau \gtrsim 10^7 \)), the curves converge to a baseline around \( 10^{-21} \)–\( 10^{-23} \), suggesting that additional pulses beyond a certain point offer diminishing returns in this regime. Overall, the filter functions show that higher-order CPMG sequences provide broader and deeper suppression of low-frequency noise, with tunable filtering properties governed by the pulse number.
+
+The plots in Fig.~\ref{fig:Filter_Function}(c) compare the filter functions \( F_{ij}/\omega^2 \) for sequences \( \mathcal{A}_1 \) as the parameter \( f \) varies from 0 to 0.8. In the low-frequency regime ($\omega\tau << 1$) for \( \mathcal{A}_1 \), the function shifts from $4\times10^{-9}$ ($f=0$) to $1.8\times10^{-8}$ ($f=0.3$), suggesting an increment by $\sim$4.5 times, while the peak amplitude remains stable (within 0.1\%) at approximately \( 6.5 \times 10^{-6} \) across values of \( f\in(0, 0.3) \). In contrast, \( \mathcal{B}_1 \) at low frequencies, shows a change in the function from $3\times10^{-9}$ ($f=0$) to $4.5\times10^{-7}$ (
+$f=0.3$), which is an increment by $\sim$150 times. Further, the peak amplitude reduces by 3\% (for $f=0$ to 0.3) and even undergoes a leftward shift and narrowing of the filter bandwidth.
+
+These differences indicate that \( \mathcal{B}_1 \) is more sensitive to variations in \( f \), with its filtering strength and spectral selectivity degrading significantly as \( f \) increases. In contrast, \( \mathcal{A}_1 \) maintains consistent filtering performance, making it $\sim30$ times more robust under fluctuations in $f$ (from 0 to 0.3). Thus, based on the stability of peak height, location, and shape, \( \mathcal{A}_1 \) is quantitatively more resilient to changes in \( f \) than \( \mathcal{B}_1 \). This approach is system agnostic, and shows robustness of sequence $\mathcal{A}$ over $\mathcal{B}$ irrespective of the dominant noise spectrum of hardware.
+
+We now focus on SiV$^{-}$ based system placed on the cold-plate stage (100 mK) of a dilution refrigerator. Implementing a pulse sequence ($\mathcal{A}$ or $\mathcal{B}$) leads to active and passive heat-loads on the sample stage, which depends on multiple parameters like: dilution fridge geometry and cooling cycle, thermal properties of cryogenic coax cable, sample footprint, specific heat capacity of the sample and it's thermal anchoring with the stage. Suppose for sequence $\mathcal{A}_{N}$, pulse incoming times are $t_{j,A}=\{ \frac{(2j-1)t_{\text{dds}}}{2N} \}$, where $1\le j \le N$, and for sequence $\mathcal{B}_{N}(m)$, the incoming times are $t_{jk,B}=\{ \frac{(2j-1)t_{\text{dds}}}{2N} + (k-1)t_{\pi,B}\}$, where $1\le j \le N$ and $1\le k \le m$. We assume a realistic set of device parameters and derive the following expressions for time-dependent temperature of SiV$^{-}$ system $\Theta_{\text{SiV}}$ (see SI Sec.~III.F Eq. (89) \cite{googleSI_Programmable_Quantum_Matter_2025Google}):
+\begin{subequations}
+\begin{align}
+\Theta_{\mathrm{SiV}}(t)
+&= \overline{\Theta}_{\mathrm{CP}}
+  + \sum_{j=1}^{N}\Bigl(
+      \Theta_{\mathrm{SiV}}(t,\,t_{j,A})
+      - \overline{\Theta}_{\mathrm{CP}}
+    \Bigr)
+  \\
+&\quad \text{for }\mathcal{A}_{N}, \nonumber\\
+\Theta_{\mathrm{SiV}}(t)
+&= \overline{\Theta}_{\mathrm{CP}}
+  + \sum_{j=1}^{N}\sum_{k=1}^{m}\Bigl(
+      \Theta_{\mathrm{SiV}}(t,\,t_{jk,B})
+      - \overline{\Theta}_{\mathrm{CP}}
+    \Bigr)
+  \\
+&\quad \text{for }\mathcal{B}_{N}(m). \nonumber
+\end{align}
+\end{subequations}
+Here $\overline{\Theta}_{\text{CP}}$ takes into account the slow temperature rise in the cold-plate as in SI Eq.~(83), and $\Theta_{\text{SiV}}(t, t_{0})$ is given by:
+\begin{equation}
+\begin{split}
+  \Theta_{\mathrm{SiV}}(t,t_{0})
+  &= \Theta_{\mathrm{CP}}
+    + P_{\mathrm{th}}\bigl(
+       e^{-\frac{t-t_{0}}{\tau_{\mathrm{th,SiV}}}}
+       - e^{-9\,\frac{t-t_{0}}{\tau_{\mathrm{th,SiV}}}}
+      \bigr) \\
+  &\quad\;\times \operatorname{ReLU}(t - t_{0}) \,.
+\end{split}
+\end{equation}
+where $P_{\text{th}}$ is a normalization constant (estimated in SI Eq.~(87)), and $\tau_{\text{th, SiV}}$ is the thermalization time-scale of the sample. Thus, while the dynamical decouping pulses are applied, it simultaneously increases the temperature of the sample which impacts the $T_{2}$ and $T_{1}$ time of the system. Assuming that $1/T_{2(1)}$ of SiV$^{-}$ has a linear dependence with $\Theta_{\text{SiV}}$ in the low temperature and low strain regime \cite{pingault_coherent_2017, Jahnke_2015}, SI Eq.~(91-92) yields the following effective $T_{2}$ times for a measurement window $t_{\text{dds}}$ in case of both sequences:
+\begin{widetext}
+\begin{subequations}
+    \begin{align}
+       T_{2}(\Theta_{\text{SiV}}(t_{\text{dds}},\mathcal{A}_{N})) &= \frac{T_{2}(0.1~\text{K},\mathcal{A}_{N})}{1 + T_{2}(0.1~\text{K},\mathcal{A}_{N})\cdot(\Theta_{\text{SiV}}(t_{\text{dds}},\mathcal{A}_{N})-0.1)\cdot3\cdot10^{6}}\\[1.5ex]
+       T_{2}(\Theta_{\text{SiV}}(t_{\text{dds}},\mathcal{B}_{N})) &= \frac{T_{2}(0.1~\text{K},\mathcal{B}_{N})}{1 + T_{2}(0.1~\text{K},\mathcal{B}_{N})\cdot(\Theta_{\text{SiV}}(t_{\text{dds}},\mathcal{B}_{N})-0.1)\cdot3\cdot10^{6}}
+    \end{align}
+\end{subequations}
+\end{widetext}
+This implies that two competing effects are in play: (a) heat load due to the pulses decohering the system and (b) dynamical decoupling improving the coherence of the system. Fig.\ref{fig:T2_sims}(a-c) show the rise of SiV$^{-}$ temperature $\Theta_{\text{SiV}}$ with CPMG index $N$, since the heat-load increases with $N$. For these simulations, we take $m=121$ in $\mathcal{B}(m,\tau)$ to address the 121 qubits in the $\epsilon$-$f$ space. Further, as $t_{\text{dds}}$ increases from 0.2 - 2 ms, the rise in $\Theta_{\text{SiV}}$ reduces for both $\mathcal{A}$ and $\mathcal{B}$, due to the reduction of the duty-cycle of the incoming pulses while $t_{\text{dds}}$ increases. Since, $\mathcal{B}$ leads to a larger heat-load into the sample compared to $\mathcal{A}$, we observe that for $t_{\text{dds}}= 0.2$ ms $\Theta_{\text{SiV}}$ increases by $\sim$5.2\% for $\mathcal{B}$ in contrast to a negligible rise of $\sim$0.3\% for $\mathcal{A}$. Since, $\mathcal{B}$ consistently leads to larger SiV$^{-}$ temperatures compared to $\mathcal{A}$, it leads to lower $T_{2}$ due to larger phonon-induced decoherence, as shown in Fig.\ref{fig:T2_sims}(d-f). Further, as $t_{\text{dds}}$ increases from 0.2 - 2 ms, the $T_{2}$ value for both $\mathcal{A}$ and $\mathcal{B}$ increases, since the effective thermal load reduces with increase in $t_{\text{dds}}$. We also observe that for a particular value of $t_{\text{dds}}$, there exists an optimal value of $N$ (encircled in red in Fig. \ref{fig:T2_sims}(d-f)) which maximizes $T_{2}$. The existence of this optimal value is a demonstration of the interplay between the two effects of heat-induced decoherence and increased coherence due to decoupling sequences. Table \ref{tab:t2_comparison1} and \ref{tab:t2_comparison2} compare the coherence times \( T_{2\mathcal{A}} \) and \( T_{2\mathcal{B}} \) for two sequences across various pulse numbers \( N \) for two different values of $t_{\text{dds}}$. The numbers reported here are the average and standard deviation over all grid points in the composite search space. Sequence \( \mathcal{A} \) consistently produces longer coherence times than sequence \( \mathcal{B} \), with enhancement factors extending to 7. Table \ref{tab:t2_comparison2} shows that for larger values of $t_{\text{dds}}$ the enhancement ratio reduces because the heat-load due to $\mathcal{B}$ approaches the heat-load due to $\mathcal{A}$ as seen from Fig. \ref{fig:T2_sims}(a-c). 
+
+\begin{table}[h]
+\centering
+\caption{Comparison of coherence times and mean enhancement for $t_{\text{dds}}=0.2$ ms. Values shown are (mean $\pm$ standard deviation) over the grid points.
+}
+\begin{tabular}{|c| c| c |c|}
+\hline
+$N$ & $T_{2\mathcal{A}}$ (ms) & $T_{2\mathcal{B}}$ (ms) & Enhancement \\
+\hline
+\rule{0pt}{2.5ex}
+2   & 0.43$^{\pm0.18}$  & 0.28  & 1.5 \\
+\hline
+\rule{0pt}{2.5ex}
+4   & 0.51$^{\pm0.27}$  & 0.19  & 2.7 \\
+\hline
+\rule{0pt}{2.5ex}
+8   & 0.49$^{\pm0.29}$  & 0.10  & 4.7 \\
+\hline
+\rule{0pt}{2.5ex}
+16   & 0.39$^{\pm0.19}$  & 0.06  & 7.2 \\
+\hline
+\end{tabular}
+\label{tab:t2_comparison1}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Comparison of coherence times and mean enhancement for $t_{\text{dds}}=0.8$ ms. Values shown are (mean $\pm$ standard deviation) over the grid points.
+}
+\begin{tabular}{|c| c| c |c|}
+\hline
+$N$ & $T_{2\mathcal{A}}$ (ms) & $T_{2\mathcal{B}}$ (ms) & Enhancement \\
+\hline
+\rule{0pt}{2.5ex}
+2   & 0.45$^{\pm0.19}$  & 0.59  & 0.75 \\
+\hline
+\rule{0pt}{2.5ex}
+4   & 0.58$^{\pm0.34}$  & 0.57  & 1.0 \\
+\hline
+\rule{0pt}{2.5ex}
+8   & 0.65$^{\pm0.47}$  & 0.37  & 1.8 \\
+\hline
+\rule{0pt}{2.5ex}
+16   & 0.62$^{\pm0.44}$  & 0.20  & 3.0 \\
+\hline
+\end{tabular}
+\label{tab:t2_comparison2}
+\end{table}
+The orange shaded regions in Fig.\ref{fig:T2_sims}(d-f) represents the region for which $T_{2}<t_{\text{dds}}$, indicating that any pulse sequence within that region is not useful for dynamical decoupling. For lower values of $t_{\text{dds}}= 0.2$ ms, $\mathcal{B}$ is within this region for $N>2$ whereas $\mathcal{A}$ always stays outside. Increasing $t_{\text{dds}}$ completely submerges $\mathcal{B}$ in this region, implying that $\mathcal{B}$ cannot be used for dynamical decoupling at all for larger values of $t_{\text{dds}}$. Sequence $\mathcal{A}$ is now only partially submerged, implying that $\mathcal{A}$ not just shows enhancement in $T_{2}$, but due to a lower heat-load it also performs useful dynamical decoupling. Fig \ref{fig:T2_sims}(g-j) shows the 2D-color map of the enhancement ratio for $t_{\text{dds}}=0.8$ ms and various $N$. The contours represent fixed enhancement ratios. As $N$ increases, we observe larger contour landscapes with some enhancement values extending even beyond 8. 
+\rev{The fact that our robust global pulse (Sequence $\mathcal{A}$) outperforms even this idealized, best-case \textit{steelman} version of Sequence $\mathcal{B}$ is the critical result. It serves as a definitive proof of superiority: if Sequence $\mathcal{A}$ wins against a "perfect" Sequence $\mathcal{B}$, it will inherently dominate a "realistic" Sequence $\mathcal{B}$, where crosstalk would degrade the baseline fidelity significantly further. Thus, our results represent a lower bound on the performance advantage of the SAFE-GRAPE approach.}
+
+This section shows that the dynamical decoupling sequence implemented by the SAFE-GRAPE optimized unitaries outperforms traditional bang-bang sequences in terms of: heat-load ($\Theta_{\text{SiV}}$ increases by $\sim$5.2\% for $\mathcal{B}$ and $\sim$0.3\% for $\mathcal{A}$), $T_{2}$ enhancement (reaching over 7), and feasibility ($\mathcal{B}$ stops to decouple noise for larger values of $t_{\text{dds}}$). In the Supplementary section, we further change the number of qubits $m$ from $10^{2}$ to $10^{4}$ and observe that as the number of qubits scale, protocol $\mathcal{B}$ goes completely within the orange shaded region, implying that the approach $\mathcal{B}$ is non-scalable for dynamical-decoupling. Hence we have created a phase-noise reduced platform, which can be used to implement the single-photon entanglement protocol of the next section. 
+
+\section{Application to Quantum Computation}
+\label{sec_ApplicationQuantumComputation}
+
+% \subsection{Quantum Computation}
+% \label{sec_QuantumComputation}
+
+\subsection{Entanglement Operations and Cluster State Generation}
+\begin{figure*}[htb]
+    \centering
+    \includegraphics[width=\linewidth]{figs/Fig_6.pdf}
+    \caption{\textbf{Entanglement links statistics.}\textbf{(a)} Checkerboard representation ($\epsilon$-$f$ space) of two systems, in which qubit $j$ (system A) and $k$ (system B) is highlighted (colors only represent inhomogeneity and have no physical significance); an entanglement attempt on $j$-$k$, leads to a success after waiting for $m_{jk}$ attempts with a fidelity $F_{jk}$. \textbf{(b)} A graphical representation of the qubits over 4  different experimental cycles, where M$_{i}$ shows the $i^{\text{th}}$ experimental cycle. For any experimental cycle, the policy produces different configurations of subgraphs G$_{ij}$ with quantum volume V$_{ij}$ corresponding to the $j^{\text{th}}$ cluster of the $i^{\text{th}}$ experimental cycle.}
+    \label{fig:Graph_building}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.8\linewidth]{figs/QV.pdf}
+    \caption{\textbf{Entanglement simulations}. Simulations over two systems (each system containing 121 points on the $\epsilon$-$f$ space), with $121^{2} (=14641)$ possible links. Here $n_{\text{links}}$ is the number of links which give effective error $\epsilon_{\text{eff}}<0.5$ and the red circle represents the optimal value of $N$ which maximizes $n_{\text{links}}$ and minimizes $\epsilon_{\text{eff}}$. For these simulations $t_{\text{cmpl}} = 10~\mu$s. \textbf{(a)} For a low value of $t_{\text{dds}}= 0.2$ ms, $\mathcal{B}$ starts off ($N = 2$) with performing better than $\mathcal{A}$, but for $N>2$, $n_{\text{links}}$ for $\mathcal{B}$ drops to zero as also confirmed from Fig. \ref{fig:T2_sims}(d) where sequence $\mathcal{B}$ is completely submerged in shaded region for $N>2$. On the contrary $n_{\text{links}}$ for $\mathcal{A}$ is consistent around $\sim 5000-10000$.  \textbf{(b)} For a larger value of $t_{\text{dds}} = 0.8$ ms, $n_{\text{links}}$ for $\mathcal{B}$ drops to zero for all $N$ which is confirmed from Fig. \ref{fig:T2_sims}(e) where $\mathcal{B}$ is completely submerged in the shaded region, whereas $\mathcal{A}$ reaches an optimum value of $\sim$900 for $N=8$, and thus performs better than $\mathcal{B}$. \textbf{(c-d)} Variation of $\epsilon_{\text{eff}}$ with $N$ (with the orange region showing the region $\epsilon_{\text{eff}}>0.5$). For $t_{\text{dds}}=0.2$ ms, $\mathcal{B}$ gets submerged in the orange region for $N>2$ whereas $\mathcal{A}$ is consistently outside the shaded region, always having a lower $\epsilon_{\text{eff}}$ than $\mathcal{B}$. For $t_{\text{dds}}= 0.8$ ms, $\mathcal{B}$ is always submerged in the shaded region. $\mathcal{A}$ starts off from the shaded region, but already for $N>2$ it exits it, achieving an optimal value for $N=8$. For large $t_{\text{dds}}$, $\mathcal{A}$ consistently outperforms $\mathcal{B}$.}
+    \label{fig:QV_sims}
+\end{figure*}
+We implement a single-photon protocol \cite{Hermans_2023} for entanglement generation and start from the following initial state:
+\begin{equation}
+    \psi_{in}(\alpha, \phi) = \sqrt{\alpha}\ket{0} + \sqrt{1-\alpha}~\text{e}^{i\phi}\ket{1}
+\end{equation}
+as seen in Fig. \ref{fig:overview}(b). The checkerboard configuration in $\epsilon$-$f$ space, from Fig.~\ref{fig:Graph_building} is taken as an example where two qubits $j$ (system A) and $k$ (system B) are highlighted. We take a statistical approach to describe the resulting quantum volume. In order to generate a first successful entanglement link between qubits $j$ and $k$, one has to wait for a sufficient number of attempts $m_{jk}$. $m_{jk}$ is a random variable following a geometric distribution $P_{jk}(m) = 2\alpha\eta(1-2\alpha\eta)^{m-1}$, where $\eta$ is the single photon detection efficiency (see SI Sec.~III Eq. (32) \cite{googleSI_Programmable_Quantum_Matter_2025Google}). For our simulations, we take $(\alpha,\eta)=(10^{-4},10^{-2})$. This means that the process of cluster-state generation creates a distribution $\mathcal{D}_{m}$ of waiting times, and a distribution $\mathcal{D}_{\mathcal{F}}$ of the fidelity for the entanglement link generated between each of the total $N_q^2$ pairs:
+\begin{equation}
+\begin{split}
+\mathcal{D}_{m} &= \{m_{jk}\}_{\substack{1 \leq i \leq N_q \\ 1 \leq j \leq N_q}} \\
+\mathcal{D}_{\mathcal{F}} &= \{\mathcal{F}_{jk}\}_{\substack{1 \leq i \leq N_q \\ 1 \leq j \leq N_q}}
+\end{split}
+\end{equation}
+
+From Sec.~II.C we get for each qubit $j$ a triplet ($\epsilon_{j},z_{j},T_{2j}$), which are the gate error, $T_2$ scaling and $T_{2}$ time.
+SI Sec.~III.E yields the following expression for the lower bound on the ensemble averaged entanglement fidelity for the pair $jk$ as a function of the experimental time duration $\tau~(=t_{\text{dds}}+t_{\text{cmpl}})$\cite{googleSI_Programmable_Quantum_Matter_2025Google}:
+\begin{widetext}
+\begin{equation}
+  \rule{0pt}{3ex} % adds vertical padding (height)
+  \rule[-1.5ex]{0pt}{0pt} % adds vertical padding (depth)
+  \displaystyle
+  \overline{\mathcal{F}_{jk}(\alpha,\tau)} \ge \bigg(1-\text{e}^{-\frac{\tau}{T_{1}}}\alpha - (1- \text{e}^{-\frac{\tau}{T_{ 
+ 1}}})~p_{\text{th}}(\tau)\bigg)\bigg(\frac{1 +\text{e}^{-((\tau/T_{2j})^{z_{j}}+(\tau/T_{2k})^{z_{k}})} - \sqrt{1 - \text{e}^{-2(\tau/T_{2j})^{z_{j}}}}\sqrt{1 - \text{e}^{-2(\tau/T_{2k})^{z_{k}}}}}{2}\bigg)
+  %
+\end{equation}
+\end{widetext}
+Here the overline represents an ensemble average over multiple measurement attempts leading to averaging over the noise bath, 
+and $p_{\text{th}}$ is the thermodynamic steady-state probabilities given by the following Boltzmann distribution:
+\begin{equation}
+    p_{\text{th}} = \frac{1}{1 + \text{e}^{-\hbar\omega / (k_B \Theta_{\text{SiV}})}}
+\end{equation}
+where $\hbar\omega$ is the energy of the qubit, and $k_{B}$ is the Boltzmann constant. All three parameters: $T_{2}, T_{1}, p_{\text{th}}$ depend on $\tau$ through the following mapping: $\{T_{2}, T_{1}, p_{\text{th}}\}\to\Theta_{\text{SiV}}\to~\tau$. Each measurement cycle, leads to a bipartite graph $\mathcal{G}_{\tau}$ with edges given by the set $\mathcal{A}_{\tau}$. Suppose that $\mathcal{G}_{\tau}$ is a union of $\mathcal{K}_{\tau}$ disconnected subgraphs, then we have the following expressions:
+\begin{equation}
+\begin{split}
+\mathcal{G}_{\tau} &= \{ (j,k) \mid m_{jk} < M \,\}\\
+\mathcal{G}_{\tau} &= \bigoplus_{i=1}^{\mathcal{K}_{\tau}} \mathcal{G}^i_{\tau}
+\end{split}
+\end{equation}
+$M$ is the total number of attempts (Fig.~\ref{fig:overview}(b)), $\mathcal{G}^i_{\tau}$ is the $i^{th}$ connected subgraph of $\mathcal{G}_{\tau}$. We represent the set of edges and nodes in $\mathcal{G}^i_{\tau}$ by $\mathcal{E}^i_{\tau}$, $\mathcal{N}^i_{\tau}$ respectively. Each subgraph $\mathcal{G}^i_{\tau}$ acts as a quantum computational substrate with its quantum volume defined as \cite{Cross_2019, Moll2018_QST_VQA}:
+% \cite{Cross_2019, wikipediaQuantumVolume}
+\begin{equation}
+\log_{2}(\text{V}^i_\tau) = 
+\underset{2 \le n \le |\mathcal{N}^i_{\tau}|}{\text{argmax}}\, 
+\min\left(n, \frac{1}{n\epsilon_{\text{eff}}}\right) 
+\le 
+\left\lfloor \frac{1}{\sqrt{\epsilon_{\text{eff}}}} \right\rfloor
+\end{equation}
+Here $\epsilon_{\text{eff}}$ is the average two-qubit gate error over all possible links ($j$-$k$) such that $\overline{\epsilon_{jk}}<0.5$ given by:
+\begin{equation}
+\begin{split}
+  \epsilon_{\mathrm{eff}}
+  &= \frac{1}{n_{\mathrm{links}}\bigl(t_{\mathrm{dds}},\,t_{\mathrm{cmpl}}\bigr)} \\[0.5ex]
+  &\quad\times
+    \sum_{\substack{(j,k)\in\mathcal{G}_{\tau} \\ \overline{\epsilon_{jk}}<0.5}}
+      \overline{\epsilon_{jk}}\bigl(
+        \alpha,\,
+        t_{\mathrm{dds}},\,
+        t_{\mathrm{cmpl}},\,
+        N
+      \bigr)
+\end{split}
+\label{eq:eps_eff}
+\end{equation}
+Here, $n_{\text{links}}(t_{\text{dds}},t_{\text{cmpl}})$ is the number of links such that $\overline{\epsilon_{jk}}<0.5$, $t_{\text{dds}}$ is the time window for decoupling sequences, $t_{\text{cmpl}}$ is the compilation time (Fig.~\ref{fig:overview}(b)), $N$ is the CPMG pulse index and $\epsilon_{jk}(\alpha,\tau)$ is an ensemble averaged two-qubit gate error on the link $j$-$k$ over experimental duration $\tau$. The expression for $\epsilon_{jk}$ and its temporal average $\overline{\epsilon_{jk}}$ is derived in SI Sec.~III.E-F ~\cite{googleSI_Programmable_Quantum_Matter_2025Google}:
+
+\par\vspace{0.75\baselineskip} % fixing the line cutting eq27
+
+\begin{widetext}
+  \begin{subequations}
+  \label{Eq_e_ff}
+\begin{align}
+\epsilon_{jk}(\alpha, \tau,N) &=
+ 1 - \left(1 - \text{e}^{-\frac{\tau}{T_{1}}}\alpha 
+- (1 - \text{e}^{-\frac{\tau}{T_{1}}})\,p_{\text{th}}\right)  \notag \\
+&\quad  \times 
+\left(\frac{1 +\text{e}^{-((\tau/T_{2j})^{z_{j}}+(\tau/T_{2k})^{z_{k}})} - \sqrt{1 - \text{e}^{-2(\tau/T_{2j})^{z_{j}}}}\sqrt{1 - \text{e}^{-2(\tau/T_{2k})^{z_{k}}}}}{2}\right) \notag \\
+&\quad  + (2N+1)\epsilon_{1\text{-qubit}} \label{eq:eps_jk1}\\[1.5em]
+\overline{\epsilon_{jk}}(\alpha, t_{\text{dds}}, t_{\text{cmpl}}, N) &= \frac{1}{t_{\text{cmpl}}}\int^{t_{\text{dds}}+t_{\text{cmpl}}}_{t_{\text{dds}}}\epsilon_{jk}(\alpha, \tau,N)~\text{d}\tau \label{eq:eps_jk2}
+\end{align}
+\end{subequations}
+\end{widetext}
+The first term in Eq. (\ref{eq:eps_jk1}) is the error due to entanglement (which we approximate as CNOT gate error) and the second term is the local unitary (single-qubit) error. Eq. (\ref{eq:eps_jk1}) follows from the universality theorem \cite{Nielsen_Chuang_2010} stating that any two qubit gate can be represented as a combination of a CNOT gate and single-qubit unitary. Since the entanglement process occurs stochastically in the time-window $t=(t_{\text{dds}}, t_{\text{dds}}+t_{\text{cmpl}})$, we take the temporal average of $\epsilon_{jk}(\alpha, \tau,N)$ over this window. We can then estimate $\epsilon_{\text{eff}}$ by plugging Eq. (\ref{eq:eps_jk1}) and (\ref{eq:eps_jk2}) in Eq. (\ref{eq:eps_eff}). We report two figures of merits for the cluster-state generation: $\epsilon_{\text{eff}}(t_{\text{dds}}, t_{\text{cmpl}}, N)$ and $n_{\text{links}}$.
+\begin{table}[h]
+\centering
+\caption{Comparison of entanglement link statistics for  $t_{\text{dds}}=0.2$ ms and $t_{\text{cmpl}}=10~\mu$s.
+}
+\begin{tabular}{|c| c| c | c | c|}
+\hline
+$N$ & $n_{\text{links},\mathcal{A}}$ & $n_{\text{links},\mathcal{B}}$ & $\epsilon_{\text{eff},\mathcal{A}}$ & $\epsilon_{\text{eff},\mathcal{B}}$\\
+\hline
+\rule{0pt}{2.5ex}
+2   & 10231  & 14641 & 0.19 & 0.29\\
+\hline
+\rule{0pt}{2.5ex}
+4   & 9221  & 0 & 0.19 & 0.94\\
+\hline
+\rule{0pt}{2.5ex}
+8   & 8029  & 0 & 0.23 & 1.0\\
+\hline
+\rule{0pt}{2.5ex}
+16   & 5857  & 0 & 0.30 & 1.0\\
+\hline
+\end{tabular}
+\label{tab:qv_comparison1}
+\end{table}
+\begin{table}[h]
+\centering
+\caption{Comparison of entanglement link statistics for  $t_{\text{dds}}=0.8$ ms and $t_{\text{cmpl}}=10~\mu$s.
+}
+\begin{tabular}{|c| c| c | c | c|}
+\hline
+$N$ & $n_{\text{links},\mathcal{A}}$ & $n_{\text{links},\mathcal{B}}$ & $\epsilon_{\text{eff},\mathcal{A}}$ & $\epsilon_{\text{eff},\mathcal{B}}$\\
+\hline
+\rule{0pt}{2.5ex}
+2   & 0  & 0 & 1.0 & 0.999\\
+\hline
+\rule{0pt}{2.5ex}
+4   & 552  & 0 & 0.39 & 0.9999\\
+\hline
+\rule{0pt}{2.5ex}
+8   & 926  & 0 & 0.36 & 1.0\\
+\hline
+\rule{0pt}{2.5ex}
+16   & 447  & 0 & 0.39 & 1.0\\
+\hline
+\end{tabular}
+\label{tab:qv_comparison2}
+\end{table}
+
+We perform the entanglement error simulations over two systems (for $t_{\text{dds}}$ = $\{$0.2 ms, 0.8 ms$\}$ and $t_{\text{cmpl}}=10~\mu$s), each containing 121 grid-points (in $\epsilon$-$f$ space), implying that the total number of links are $121^2~(= 14641)$\rev{; here $m=121$ is a modeling choice corresponding to a $11 \times 11$ discretization of the $(\epsilon,f)$ error space, which we interpret as 121 physically distinct, addressable emitters in a single device \cite{PhysRevB.97.205444, PhysRevLett.123.183602, wan_large-scale_2020, PhysRevX.9.031022}}. For low values of $t_{\text{dds}}=0.2$ ms, we observe from Fig. \ref{fig:QV_sims}(a) that $n_{\text{links}}$ for $\mathcal{B}$ ($N=2$) starts off high at 14641 but sharply reduces to 0 for $N>2$, which is supported by Fig. \ref{fig:T2_sims}(d), where $\mathcal{B}$ is submerged in the shaded region for $N>2$. On the contrast, $\mathcal{A}$ varies from roughly 10000 to 6000 with increase in $N$. Thus, for $t_{\text{dds}}= 0.2$ ms, $n_{\text{links}}$ of $\mathcal{A}$ exceeds that of $\mathcal{B}$ by approximately $O(10^3\text{--}10^4)$. For $t_{\text{dds}}=0.8$ ms $n_{\text{links}}$ for $\mathcal{B}$ is zero for all $N$, whereas $n_{\text{links}}$ achieves an optimal value at $\sim~900$ for $\mathcal{A}_8$. This is shown in Fig. \ref{fig:QV_sims}(a-b). Fig. \ref{fig:QV_sims}(c-d) shows the variation of $\epsilon_{\text{eff}}$ with $N$, where the orange shaded area represents the region for which $\epsilon_{\text{eff}}>0.5$. All sequences within this region give $n_{\text{links}}=0$. For $t_{\text{dds}}=0.2$ ms $\mathcal{B}$ starts off outside this region but enters it for $N>2$, whereas $\mathcal{A}$ is consistently outside the shaded region up to $N =16$. For $t_{\text{dds}}=0.8$ ms, $\mathcal{B}$ is always inside the shaded region, whereas $\mathcal{A}$ starts from this region, but exits it for $N>2$. Moreover it attains an optimal value for $N=8$. The existence of an optimal $N$ (encircled in red) is again a signature of two competing effects as discussed previously. Thus, for $t_{\text{dds}}= 0.8$ ms, $n_{\text{links}}$ for $\mathcal{A}$ exceeds that of $\mathcal{B}$ by approximately $O(10^2\text{--}10^3)$. Table \ref{tab:qv_comparison1} and \ref{tab:qv_comparison2} summarize these values for the two sequences.
+
+This section shows that the SAFE-GRAPE based entanglement protocol outperforms conventional bang-bang CPMG in terms of: the number of entanglement links (exceeding by $O(10^2\text{--}10^4)$, depending on the temporal window of the dynamical decoupling sequences) and feasibility ($\mathcal{B}$ is unable to create links with $\overline{\epsilon_{jk}}<0.5$ for larger values of $t_{\text{dds}}$).    
+    
+
+
+
+
+\subsection{Programmability and Compilation}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\linewidth]{figs/Fig_8.pdf}
+    \caption{\textbf{Programmability and entanglement compilation}. \textbf{(a.i)} Schematic for Algorithm~\ref{alg:1} illustrated for three qubits (in purple, crimson and orange colors), where one first starts with the curve $f_{opt}$ (optical frequency) vs $s_{dc}$ (DC-strain), then maps it onto the time plot to construct the global strain drive $\tilde{s}_{a}(t)$, which leads to a train of spin-photon entanglements (photonic time-bin qubits are represented as colored pulses where the color matches that of the qubit with which it is entangled. \textbf{(a.ii)} Spin-photon entanglement generation per color-center at the timestep where laser frequency $f_{L}$ matches its optical transition frequency  \textbf{(b)} Train of entangled time-bin qubits arriving at the beam-splitter from two systems in case of $T_{A}$ = $2T_{B}$. Every temporal coincidence between two pulse trains means an entanglement attempt between the respective remote qubits (Bell-state projection). For example at $t=T_{A}=2T_{B}$, photonic qubit at $T_{A}$ (entangled with qubit $2_{A}$) temporally overlaps with photonic qubit at $2T_{B}$ (entangled with qubit $3_{B}$). Hence, this is an entanglement attempt between qubits $2_{A}$ and $3_{B}$ (represented in dotted line by link $\mathcal{L}_{2}$). For a measurement window of $4T_{A}$ 4 unique links are attempted, leaving behind 2 links for all-to-all connectivity. The table on the right shows the link statistics and the number $h_{j}$ represents the fraction of total possible links that occur $j$-times in a given window.}
+    \label{fig:Programmability}
+\end{figure*}
+
+
+The task of programmability and compilation of color-center qubits relies on the assumption (see Sec.~\ref{sec:strain_window}) that there exists a strain regime where there is a one-to-one mapping $\mathbb{F}_{aj}$ from the strain applied on system A, to the optical frequency of qubit $j$ as follows:
+\begin{equation}
+    \begin{split}
+        f_{j}(t) &= \mathbb{F}_{aj}(s_{a}(t))\\ 
+        f_{j} &= \mathbb{F}_{aj}(s_{a})
+    \end{split}
+\end{equation}
+where $f_{j}(t)$ is the time-dependent optical transition frequency of qubit $j$, due to the slow modulation in the strain $s_{a}(t)$. Assuming that we are in the strain regime where $\mathbb{F}_{aj}$ is invertible, we have the following:
+\begin{equation}
+    s_{a} = \mathbb{F}_{aj}^{-1}(f_{j})
+\end{equation}
+To define the strain which leads to the optical frequency equal to the laser frequency $f_{L}$, we adapt the following definition (Fig. \ref{fig:Programmability} (a.i)):
+\begin{equation}
+    s_{aj} = \mathbb{F}_{aj}^{-1}(f_{L})
+\end{equation}
+which leads to a set of strains $\{s_{aj}\}_{\substack{1\le j \le N_{a}}}$, where $N_{a(b)}$ is the number of qubits in system A(B). Without loss of generality, we can assume that the qubits are labeled such that the sequence is strictly monotonic:
+\begin{equation}
+    s_{a1} < s_{a2} <  \cdots < s_{aj} < \cdots < s_{aN_{a}}
+\end{equation}
+Fig \ref{fig:Programmability}(a.ii) shows the schematic for a laser interacting with a 4-level system to generate spin-photon entanglement, where the photonic qubit is encoded in the time-bin basis. The task of generating spin-photon entanglement at timestamps: \{$0, T_{a}, 2T_{a}, \cdots, (N_{a}-1)T_{a}$\} can be solved by finding a global drive $\tilde{s}_{a}(t)$ for system A which satisfies the following condition:
+\begin{equation}
+    \tilde{s}_{a}((k-1)\cdot T_{a}) = s_{ak}\hspace{20pt} \forall k\in\{1,N_{a}\}
+\end{equation}
+under the following constraints:
+\begin{equation}
+    \begin{split}
+        &(i) \hspace{20pt} T_{a} > 1/\gamma_{opt}\\
+        &(ii) \hspace{20pt} \frac{d\tilde{s}_{a}(t)}{dt} < s_{max}
+    \end{split}
+\end{equation}
+The first constraint penalizes overlap between the emitted photons from different qubits, while the second constraint avoids sidebands due to strain modulation. We propose a simplistic solution based on Algorithm~\ref{alg:1}.
+
+\begin{figure*}[t]
+\algcaption{Computation of \( \tilde{s}_{a}(t) \)}
+\begin{spacing}{1.2}
+\label{alg:1}
+\begin{algorithmic}[1]
+    \State \textbf{Given sequences:} \( \{\mathbb{F}_{aj}\}_{1\le j\le N_{a}}, \{kT_{a}\}_{0\le k\le (N_{a}-1)} \)
+    \State \textbf{Evaluate:} \( s_{aj} \gets \mathbb{F}_{aj}^{-1}(f_L) \)
+    \State \textbf{Assume (w.l.o.g.):} The sequence \(\{ s_{aj} \}\) is strictly monotonic.
+    \State \(\beta_j \gets \dfrac{s_{a,j+1} - s_{a,j}}{T_a}\)
+    \State \(\beta^* \gets \max\{\beta_j\}\)
+    \State \(\kappa \gets \dfrac{\beta^*}{s_{\max}}\)
+    \State \( T_a \gets {T_a}(\operatorname{ReLU}(\kappa-1)+1) \)
+    \For{\(1 \le j \le N_{a}-1\)}
+        \If{\((j-1)T_a \le t \le jT_a\)}
+            \State \( \tilde{s}_{a}(t) \gets \dfrac{s_{a,j+1} - s_{a,j}}{T_a}\, t + \Bigl(j\, s_{a,j} + (1-j)\, s_{a,j+1}\Bigr)\)\Comment{Linear interpolation}
+        \EndIf
+    \EndFor
+    \For{\( N_{a}T_{a} \le t \le (2N_{a}-1)T_{a}\)}
+        \State \( \tilde{s}_{a}(t) \gets \tilde{s}_{a}((2N_{a}-1)T_{a}-t) \)\Comment{Palindromic extension of $\tilde{s}_{a}(t)$}
+    \EndFor
+    \For{\( t \ge 2N_{a}T_{a} \)}
+        \State \( q \gets \left\lfloor \frac{t}{2N_{a}T_{a}} \right\rfloor\ \)
+        \State \( \tilde{s}_{a}(t) \gets \tilde{s}_{a}(t - 2N_{a}T_{a}q) \)\Comment{Periodic extension of $\tilde{s}_{a}(t)$}
+    \EndFor
+    \State \Return \( \tilde{s}_{a}(t)  \) 
+\end{algorithmic}
+\end{spacing}
+\noindent\rule{\textwidth}{0.8pt}
+\end{figure*}
+
+We use the same algorithm to compute the global drive for system B, $\tilde{s}_{b}(t)$ corresponding to a mapping sequence: $\{\mathbb{F}_{bj}\}_{1\le j\le N_{b}}$ and time sequence $\{kT_{b}\}_{0\le k\le (N_{b}-1)}$. Because of the way our global drive is constructed, spin-photon entanglement is established at the following time sequences $\mathcal{T}_{A(B)} \equiv \{kT_{a(b)}\}_{k\in\mathbb{W}}$. Further, the spin-photon entanglement at timestep $\mathcal{T}_{A(B)}(j)$ is with the spin-qubit labeled $\theta_{ja(b)}$, where qubit sequence $\mathcal{Q}_{A(B)} \equiv \{\theta_{ja(b)}\}$ is also termed as a triangular-wave sequence which has the following compact form:
+% \begin{equation}
+%     \theta_{ja(b)} = 1 + \min\Bigl\{\, j \bmod (2N_{a(b)}),\, (2N_{a(b)}-1) - \bigl(j \bmod (2N_{a(b)})\bigr) \Bigr\}\\
+%     \quad:j\in\mathbb{W}
+% \end{equation}
+\begin{equation}
+\begin{aligned}
+    \theta_{ja(b)} =\ & 1 + \min\Bigl\{ j \bmod (2N_{a(b)}), \\
+    & (2N_{a(b)} - 1) - \bigl(j \bmod (2N_{a(b)})\bigr) \Bigr\}
+\end{aligned}
+\label{eq:triangularwave}
+% \quad : j \in \mathbb{W}
+\end{equation}
+%
+where $j$ is in the set of whole numbers.
+
+The second stage of compilation builds on the two time sequences $\mathcal{T}_{A}$ and $\mathcal{T}_{B}$. This stage is for creating entanglement link attempts efficiently between system A and B, by overlapping the two timing sequences. We propose Algorithm~\ref{alg:2} for this stage. Depending on the global strain drive, we can get different qubit mapping sequences $\mathcal{Q}_{A(B)}$. Because of the construction of Algorithm \ref{alg:1} (pseudocode: lines 14 and 18), where the global drive is forced to be palindromic and periodic in nature, the qubit sequence it creates has a triangular wave-form structure as described in Eq. (\ref{eq:triangularwave}). This can be seen pictorially in Fig. \ref{fig:Programmability}(b). Algorithm \ref{alg:2} takes as an input these two qubit mapping sequences $\{\mathcal{Q}_{A},\mathcal{Q}_{B}\}$, and periodic timing sequences $\{\mathcal{T}_{A},\mathcal{T}_{B}\}$. It finds the scaling $m_{scal}$ (= $\frac{T_{A}}{T_{B}}$), for which the number of unique entanglement links is maximized. This is demonstrated with an example in Fig. \ref{fig:Programmability}(b). We define the metric $h_{j}$ as fraction of total possible links that occur $j$ times in a given window. We see that for $T_{meas}=4T_{A}=8T_{B}$, system A generates time-bin qubits $\{1_{A}, 2_{A}, 2_{A}, 1_{A}, 1_{A}\}$, whereas system B generates $\{1_{B}, 2_{B}, 3_{B}, 3_{B}, 2_{B}, 1_{B}, 1_{B}, 2_{B}, 3_{B}\}$. We see that temporal overlaps only lead to 5 entanglement attempts: $\{1_{A}-1_{B}, 2_{A}-3_{B}, 2_{A}-2_{B}, 1_{A}-1_{B}, 1_{A}-3_{B}\}$.\newline 
+Out of these 5 attempts we get the following statistics:\\ 
+\begin{itemize}
+    \item links that occur exactly once:  $\{2_{A}-3_{B}, 2_{A}-2_{B}, 1_{A}-3_{B} \}\to h_{1} = 3/6$
+    \item links that occur exactly twice:  $\{1_{A}-1_{B}\}\to h_{2} = 1/6$
+    \item links that never occur:  $\{1_{A}-2_{B}, 2_{A}-1_{B}\}\to h_{0} = 2/6$
+\end{itemize}
+These links statistics are also summarized in Fig. \ref{fig:Programmability}(b). Because of the construction of Algorithm \ref{alg:1} and \ref{alg:2}, the fraction of attempted links $\sum_{i\ge1}h_{i}$ satisfies the following inequality:
+\begin{equation}
+    \sum_{i\ge1}h_{i} \ge \frac{\text{max}\{ N_{a},N_{b}\}}{N_{a}N_{b}}
+\end{equation}
+The above relation implies that using the combination of Algorithms~\ref{alg:1} and \ref{alg:2}, the number of unique entanglement links is bounded by order $\Omega(N_q)$. One can further improve this bound by sweeping on the value of $m_{scal}$.
+
+In Fig. \ref{fig:Compiler_sims} we show a more thorough analysis of our compilation algorithm. For all combinations of $(N_a,N_b)$ qubits in the respective systems (illustrated for $N_b\le N_a\le10)$ we compute the optimal $m_{scal}$ that minimizes the fraction of missing links $h_0$ (Fig. \ref{fig:Compiler_sims}(a-b)). Fig. \ref{fig:Compiler_sims}(c) shows the minimum required measurement window to achieve the minimal $h_0$ in each of these scenarios. In Fig. \ref{fig:Compiler_sims}(d) we show for a specific configuration how the link statistics evolve over time. In this specific case, we find that after time $t=20T_A$ all possible links between qubits of both systems have been attempted. 
+
+\begin{figure*}[t]
+\algcaption{Entanglement Compiler}
+\begin{spacing}{1.2}
+\label{alg:2}
+\begin{algorithmic}[1]
+    \State \textbf{Given:} $\mathcal{Q}_{A}, \mathcal{Q}_{B}$, $T_{a}, T_{b}, N_{a}, N_{b}$
+    \State \( E_{max} \gets N_{a}N_{b}    \) 
+    \State \textbf{Assume:} $T_{a}=T_{b} = T_{0}$
+    \For{\(1 \le m_{scal} \le \text{min}(N_{a}, N_{b})\)}
+        \State \( T_{a} \gets m_{scal}T_{0}\)
+        \State \( j_{\max} \gets \mathcal{J}(N_{a},N_{b},m_{scal})  \)\Comment{For derivation of $\mathcal{J}$, see Supplements}
+        \For{\(0 \le j \le (j_{\max})\)}
+            \State attempt entanglement link between qubits $\mathcal{Q}_{A}(j)$ and $\mathcal{Q}_{B}(m_{scal}j)$.
+        \EndFor
+        \State \( E(m_{scal}, N_{a}, N_{b}) \gets \text{total number of unique links made between} ~\mathcal{Q}_{A} ~\text{and}~ \mathcal{Q}_{B}\)
+    \EndFor
+\State \( m^{*}_{scal} \gets \text{min}\{\operatorname*{argmin}_{m_{scal}} E(m_{scal}, N_{a}, N_{b})\} \)
+\State \( E^{*} \gets E(m^{*}_{scal}, N_{a}, N_{b}) \)\\
+\Return \( m^{*}_{scal}, E^{*}  \)
+\end{algorithmic}
+\end{spacing}
+\noindent\rule{\textwidth}{0.8pt}
+\end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=0.7\linewidth]{figs/Fig_9_new.pdf}
+    \caption{\textbf{Simulation for entanglement compilation (Algorithm~\ref{alg:2})}. Here the number $h_{j}$ represents the fraction of total possible links that occur $j$-times in an indefinite time-window, and $m_{scal}$ refers to the scaling between $T_{A}$ and $T_{B}$ (i.e. $T_{A} = m_{scal}T_{B}$). \textbf{(a)} Color map over the number of qubits in the two systems ($N_{a}$ vs $N_{b}$), where the color quantifies the minimum $h_{0}$ (i.e. the fraction of links which never get entangled) obtained over any integer scaling $m_{scal}$. Dominant blue squares suggest there are multiple configurations $(N_{a}, N_{b}, m_{scal})$ for which $h_{0}=0$, implying all-to-all connectivity. \textbf{(b)} The scaling $m_{scal}$ which minimizes $h_{0}$. \textbf{(c)} the minimum measurement window $t=\mathcal{J}T_{A}$, which minimizes $h_{0}$. \textbf{(d)} The trend for link statistics $h_{j}$ as the measurement window $t$ increases for the configuration $(N_{a}, N_{b}, m_{scal}) = (5,4,1)$.} 
+    \label{fig:Compiler_sims}
+\end{figure*}
+
+\subsection{Working strain window for Algorithm \ref{alg:1}}
+\label{sec:strain_window}
+
+Algorithm~\ref{alg:1} requires a control parameter that
+drives every optical qubit \emph{monotonically} and \emph{injectively} past a
+global laser frequency \(f_L\).
+We demonstrate that such a window exists on a state‑of‑the‑art solid‑state
+platform \cite{PhysRevB.97.205444} by simulating the spin–conserving \(\mathrm{C}_2\) transition of
+several \(\mathrm{SiV}^{-}\) centers in a nanomechanical structure, although the argument applies to any
+emitter whose lowest‑order response to strain is linear.
+
+For center \(i\) we decompose the strain that couples to the diamond
+\(E_{gx}\) mode into three additive terms
+%
+\begin{equation}
+\epsilon_{E_{gx},i}(t)=
+\underbrace{\epsilon_{E_{gx},i}^{\text{bias}}}_{\text{fabrication}}
++
+\underbrace{\epsilon_{E_{gx}}^{\text{dc}}}_{\text{piezo set–point}}
++
+\underbrace{\epsilon_{E_{gx}}^{\text{ac}}(t)}_{\text{fast control}}
+\end{equation}
+
+so that in the low‑strain limit
+(\(|\epsilon_{E_{gx}}|\lesssim10^{-4}\)) the optical frequency is
+
+\begin{equation}
+f_{\text{opt},i}
+      =f_0+\Delta d\;\epsilon_{E_{gx},i}
+\end{equation}
+with
+\begin{equation}
+\Delta d=d_{es}-d_{gs}\simeq0.5~\mathrm{PHz/strain}
+\end{equation}
+
+The static biases \(\epsilon_{E_{gx},i}^{\text{bias}}\) are drawn from the
+Gaussian distribution \(\mathcal N(0,\sigma_{\epsilon})\) with
+\(\sigma_{\epsilon}=6\times10^{-5}\), derived from reported inhomogeneous C-transition spread in nanofabricated structures \cite{PhysRevB.97.205444, googleSI_Programmable_Quantum_Matter_2025Google}. For simplicity, we assume only transverse-oriented SiV centers with $\epsilon_{yy}\neq0,\
+\epsilon_{xx}=\epsilon_{xz}=0$, simulated by diagonalizing the full
+spin–orbit–Zeeman Hamiltonian with parameters detailed in SI Table~S1 \cite{googleSI_Programmable_Quantum_Matter_2025Google}.
+
+Figure~\ref{fig:strain_window} shows the detuning
+\(\Delta f=f_{\text{opt}}-f_L\) versus the piezo set‑point
+\(\epsilon_{E_{gx}}^{\text{dc}}\).  We identify a strain regime (grey band) where every center
+crosses \(f_L\) exactly once with a positive slope, in order to fulfil the assumptions of Algorithm~\ref{alg:1} for the
+entire ensemble.  If a larger spectral spacing between crossings is required, one may simply omit the most crowded emitters without affecting the existence of the monotonic window.
+
+\begin{figure}[tb]
+  \centering
+  \includegraphics[width=\columnwidth]{figs/Fig_10.pdf}
+  \caption{\textbf{Common monotonic strain window.}
+  Calculated detuning \(\Delta f=f_{\text{opt}}-f_L\) for eleven
+  \(\mathrm{SiV}^{-}\) centres whose bias strains (colour bar) span the
+  \(\sigma_{\epsilon}=6\times10^{-5}\) distribution of
+  Ref.\,\cite{PhysRevB.97.205444}, and arbitrary laser frequency.  Black circles mark laser crossings detected
+  within \(|\Delta f|<0.2~\mathrm{GHz}\) ($C_2$ transition linewidth) and with positive local slope.  The shaded region extends from
+  the earliest to the latest of these crossings and is truncated at the first
+  additional (negative‑slope) intersection of the outer‑bias centre,
+  guaranteeing that the mapping
+  \(f_{\text{opt},i}=\mathbb{F}_{ai}(\epsilon_{E_{gx}}^{\text{dc}})\) is one‑to‑one for
+  all qubits inside the band.}
+  \label{fig:strain_window}
+\end{figure}
+
+\section{Conclusion and Outlook}
+
+We introduce a hardware-agnostic control-and-compilation framework that turns fabrication-induced inhomogeneity into a programmable resource for scalable quantum information processing. A single, globally applied strain drive—optimized via SAFE-GRAPE (Simultaneous Amplitude and Frequency Error-correcting GRadient Ascent Pulse Engineering) on a composite-pulse basis—implements uniform high-fidelity single-qubit gates across heterogeneous SiV$^{-}$ ensembles. This approach corrects for significant variations in Rabi frequencies and spectral detunings to yield single-qubit gate fidelities exceeding 99.99\% for normalized (wrt. Rabi strength) errors up to 0.3. Simulation results demonstrate that SAFE-GRAPE-based CPMG sequence \( \mathcal{A} \) consistently outperforms alternative bang-bang based CPMG sequence \( \mathcal{B} \) across multiple performance metrics and operating regimes. In the low-frequency regime, \( \mathcal{A} \) exhibits stable filtering behavior under variations in a detuning parameter \(   f \), with a modest 4.5-fold increase in low-frequency response and $<$0.1\% variation in peak amplitude, compared to a 150-fold increase and 3\% amplitude degradation for \( \mathcal{B} \). This makes \( \mathcal{A}\sim 30 \) times more robust to parameter fluctuations, independent of the underlying noise spectrum.
+
+In the decoupling regime, SAFE-GRAPE achieves a higher thermal robustness, with the heat-load parameter $\Theta_{\text{SiV}}$ increasing by approximately $5.2\%$ for protocol $\mathcal{B}$ and $0.3\%$ for protocol $\mathcal{A}$, while also delivering a significant coherence-time improvement, with $T_{2}$ enhancements reaching more than a factor of seven. Furthermore, unlike the bang-bang protocol, which ceases to suppress noise for large values of $t_{\text{dds}}$, SAFE-GRAPE maintains its feasibility, thereby enabling a phase-noise-reduced operational platform suitable for implementing the single-photon entanglement protocol.
+
+In the entanglement generation stage, the SAFE-GRAPE based protocol outperforms the bang-bang CPMG approach by achieving a markedly higher number of successful entanglement links, exceeding by $O(10^2\text{--}10^4)$ depending on the temporal window of the decoupling sequences. This advantage is further reinforced by improved operational feasibility, as protocol $\mathcal{B}$ in the bang-bang case fails to generate high-fidelity links at large $t_{\text{dds}}$, whereas SAFE-GRAPE continues to operate effectively.  
+
+Finally, the theoretical analysis indicates that by employing the combination of Algorithm \ref{alg:1} and Algorithm \ref{alg:2}, the number of unique entanglement links generated by the system is guaranteed to be bounded by order $\Omega(N_q)$. This bound is not fundamental and can be improved further by sweeping over the scaling parameter $m_{scal}$, offering a path towards even greater scalability. Collectively, these results establish SAFE-GRAPE as a robust and scalable control strategy for both noise suppression and high-rate entanglement generation, paving the way for its integration into large-scale quantum networking architectures. We also provide an end-to-end framework, summarized as an effective quantum circuit diagram in Fig.~\ref{fig:overview}(b), that delivers global control, dynamical decoupling, remote entanglement, and efficient compilation to build a bipartite cluster state.
+
+Looking forward, the SAFE-GRAPE-optimized control pulses can be further improved by incorporating more advanced machine-learning-driven, in-situ optimization techniques to adapt to dynamic changes in the qubit environment. On the hardware front, the performance can be enhanced by engineering nanomechanical structures with optimized mode shapes \cite{raniwala2025spin}, enabling more efficient strain transfer and access to higher-frequency control regimes, although practical hurdles like charge-state instability will require parallel mitigation strategies.
+
+The general nature of our framework ensures its applicability extends beyond the SiV$^{-}$ center in diamond. It can be readily adapted to other promising strain-sensitive platforms, such as other group-IV color centers in diamond (SnV$^{-}$ \cite{iwasaki2017tin,parker2024diamond,rugar2021quantum}, GeV$^{-}$ \cite{iwasaki2015germanium}) or defect centers in silicon \cite{prabhu_individually_2023, saggio_cavity-enhanced_2024, dhaliah2022first, buzzi2025spectral, PRXQuantum.5.010102, PRXQuantum.4.020308} or silicon carbide (silicon vacancy V$_{\text{Si}}$ \cite{sorman2000silicon}), thereby providing a general method for harnessing inhomogeneity in various solid-state systems.
+
+Furthermore, the demonstrated global dynamical decoupling sequences can be repurposed for quantum sensing \cite{PhysRevLett.134.120802,ulanowski2025cavity} and single-photon detection applications \cite{https://doi.org/10.48550/arxiv.2401.10455} (see SI Sec.~V \cite{googleSI_Programmable_Quantum_Matter_2025Google}). Protecting the entire ensemble from decoherence simultaneously enhances its collective sensitivity to external fields, turning it into a parallelized quantum sensor. \rev{Further by utilizing the nuclear spin as memory qubits \cite{bhaskar_experimental_2020}, the coherence timescale can be increased which allows to perform more entanglement experiments in a given time. This boosts the entanglement success rate further.} 
+
+Ultimately, this work lays the technical groundwork for measurement-based quantum processors built upon programmable quantum matter. By treating heterogeneity as a resource, our approach provides a practical roadmap towards networked demonstrations of multi-thousand-qubit cluster states, a critical step on the path to fault-tolerant quantum information systems.
+
+
+
+
+
+\section{Code Availability}
+The simulations were performed using \texttt{QuTiP} \cite{johansson2012qutip, johansson2013qutip, lambert2024qutip5quantumtoolbox} and \texttt{PyTorch} \cite{paszke2019pytorchimperativestylehighperformance} in Python. The codes can be found in our GitHub repository \cite{Git_Codes_2025}. 
+
+\section{Acknowledgements}
+The authors thank Dr. Matthew Trusheim, Dr. Hanfeng Wang and Dr. Mahmoud Jalali Mehrabad for proofreading the manuscript and offering constructive feedback. We also thank Hamza Raniwala and Dr. Ian Christen for contributing to the initial discussions of this project. We thank Dr. Ethan G. Arnault for helpful discussions regarding the thermal modeling. P.A. would like to thank Amit and Deepali Sinha Foundation Presidential Fellowship from MIT, MITRE Quantum
+Moonshot Program, and NVIDIA Academic Grant Program. L.F. acknowledges support from the Air Force Office of Scientific Research (AFOSR) under Award No. GR108261. O.H. acknowledges support from the National Science Foundation (NSF) Engineering Research Center for Quantum Networks (CQN) awarded under cooperative agreement number 1941583.
+
+\section{Author contributions}
+D.R.E., P.A., L.F., and O.H. conceived the project. P.A. performed the simulations and theoretical work for filter-functions, thermal model, entanglement fidelity and compilation algorithms. L.F. performed simulations in strain modeling, thermal modeling, and entanglement protocol and contributed to the theory for the global unitary control and compilation algorithm. O.H. defined and implemented the SAFE-GRAPE algorithm for global unitary control and performed simulations for strain driving of SiV$^{-}$ centers. P.A., L.F., O.H. prepared the manuscript. All authors discussed the results and revised the manuscript. D.R.E. supervised the project.
+
+\section{Competing interests}
+The authors declare no competing interests.
+
+\bibliography{bib}
+
+\clearpage
+\include{supp}
+
+
+\end{document}
+
+

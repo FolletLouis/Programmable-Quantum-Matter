@@ -1,0 +1,12 @@
+# Core (required for paper explorer)
+numpy>=1.20
+matplotlib>=3.5
+pandas>=1.3
+scipy>=1.7
+marimo>=0.4
+pymupdf>=1.23  # PDF to PNG conversion for static figures
+
+# Optional: for full figure reproduction
+qutip>=4.7            # Fig. 9 strain window, Filter_Function_II
+filter-functions      # Filter_Function_II
+# torch              # SAFE_GRAPE notebook (only needed to generate cache)

@@ -1,0 +1,75 @@
+/* Calming background: subtle MIT-inspired warm cream (cardinal tint) */
+:root {
+  --background: #FAF7F6 !important;
+  --muted: #F5F2F0 !important;
+  --card: #FAF7F6 !important;
+  --popover: #FAF7F6 !important;
+}
+
+html,
+body {
+  background-color: #FAF7F6 !important;
+  min-height: 100vh;
+}
+
+body > div,
+.marimo-app,
+[data-testid="notebook-container"],
+main,
+[data-testid="run-app"],
+[data-testid="notebook-root"],
+.contents,
+[data-cell-role="output"],
+[data-cell-role="output"] > div {
+  background-color: #FAF7F6 !important;
+}
+
+/* Landscape / wider layout — reduce empty side margins */
+.markdown {
+  max-width: unset !important;
+}
+
+.prose,
+.prose-lg,
+[class*="prose"] {
+  max-width: none !important;
+}
+
+/* Marimo output and markdown containers */
+[data-cell-role="output"] .prose,
+.markdown-output {
+  max-width: none !important;
+}
+
+/* Main content area — use more horizontal space */
+main,
+.marimo-app,
+[data-testid="notebook-container"] {
+  max-width: 100% !important;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Ensure figures and images use available width */
+[data-cell-role="output"] img {
+  max-width: 100% !important;
+}
+
+/* Header: reduce gap between title and subtitle */
+[data-cell-role="output"] h1 {
+  margin-bottom: 0.25em !important;
+}
+[data-cell-role="output"] h2 {
+  margin-top: 0.25em !important;
+  margin-bottom: 0.5em !important;
+}
+
+/* In-text citation links: distinct color, link to References */
+.citation-link {
+  color: #2563eb !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+.citation-link:hover {
+  text-decoration: underline;
+}
