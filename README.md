@@ -1,3 +1,5 @@
+Here is the interactive Marimo based companion notebook for our paper: https://huggingface.co/spaces/anand0043/Programmable-Quantum-Matter
+
 # Programmable-Quantum-Matter
 Codes for the paper: "Programmable Quantum Matter: Heralding Large Cluster States in Driven Inhomogeneous Spin Ensembles"
 
